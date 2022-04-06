@@ -11,4 +11,4 @@ script = ExtResource( 1 )
 light_mask = 2
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 81, 68 )
+position = Vector2( 741, 835 )
