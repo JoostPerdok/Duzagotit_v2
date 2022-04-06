@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal hit
+#signal hit
 
 export var speed = 200
 var screen_size
@@ -10,6 +10,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	$InteractArea/InteractionShape.disabled = true
 	$WalkCollision.disabled = false
+	show()
 
 
 func start(pos):
@@ -18,17 +19,16 @@ func start(pos):
 #	$CollisionShape2D.disabled = false
 
 
-func get_input(delta):
-	var velocity = Vector2()
-	if !get_parent().question_is_showing and !get_parent().minigame_is_showing:
-		if Input.is_action_pressed("move_right"):
-		   velocity.x += 1
-		if Input.is_action_pressed("move_left"):
-			velocity.x -= 1
-		if Input.is_action_pressed("move_down"):
-			velocity.y += 1
-		if Input.is_action_pressed("move_up"):
-			velocity.y -= 1
+func _physics_process(delta):
+	velocity = Vector2()
+	if Input.is_action_pressed("move_right"):
+	   velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
 	else:
 		if Input.is_action_pressed("ui_cancel"):
 			get_parent()._on_answer_show_timeout()
@@ -52,7 +52,7 @@ func get_input(delta):
 	elif velocity.y > 0:
 		$AnimatedSprite.animation = "walkD"
 		
-	move_and_collide((velocity * delta))
+	#move_and_collide((velocity * delta))
 
 #func _on_Player_body_entered( _body ):
 #	hide()
@@ -60,9 +60,6 @@ func get_input(delta):
 #	emit_signal("hit")
 #	$InteractionShape.set_deferred("disabled", true)
 #
-
-func _physics_process(delta):
-	get_input(delta)
 
 #
 #func _on_Player_hit():
