@@ -52,7 +52,7 @@ func _physics_process(delta):
 	elif velocity.y > 0:
 		$AnimatedSprite.animation = "walkD"
 		
-	#move_and_collide((velocity * delta))
+	move_and_collide((velocity * delta))
 
 #func _on_Player_body_entered( _body ):
 #	hide()
