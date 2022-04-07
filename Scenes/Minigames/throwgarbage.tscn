@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/Minigames/objectToThrow.gd" type="Script" id=1]
 [ext_resource path="res://Art/Minigame art/Throwgarbage/SeekPng.com_paper-ball-png_3694914.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Houses/TileMaps/WallHouse.tres" type="TileSet" id=3]
 [ext_resource path="res://Art/Minigame art/Throwgarbage/basket.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Minigames/Character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Minigames/Arrow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Minigames/throwgarbage.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.06226
@@ -22,10 +22,10 @@ extents = Vector2( 9.5, 4 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 78, 527 )
+script = ExtResource( 7 )
 
 [node name="objectToThrow" type="RigidBody2D" parent="."]
-position = Vector2( 175, -70 )
-script = ExtResource( 1 )
+position = Vector2( 295, -51 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -50,7 +50,7 @@ format = 1
 tile_data = PoolIntArray( -393203, 8, 524290, -262146, 8, 524288, -327667, 8, 524290, -196610, 8, 524288, -262131, 8, 524290, -131074, 8, 524288, -196595, 8, 524290, -65538, 8, 524288, -131059, 8, 524290, -2, 8, 524288, -65523, 8, 524290, 65534, 8, 524288, 13, 8, 524290, 131070, 8, 589824, 131071, 8, 589825, 65536, 8, 589825, 65537, 8, 589825, 65538, 8, 589825, 65539, 8, 589825, 65540, 8, 589825, 65541, 8, 589825, 65542, 8, 589825, 65543, 8, 589825, 65544, 8, 589825, 65545, 8, 589825, 65546, 8, 589825, 65547, 8, 589825, 65548, 8, 589825, 65549, 8, 589826 )
 
 [node name="Basket" type="StaticBody2D" parent="."]
-position = Vector2( 330, 12 )
+position = Vector2( 292, 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -83,4 +83,5 @@ position = Vector2( 0, 2 )
 [node name="Arrow" parent="." instance=ExtResource( 6 )]
 position = Vector2( 18, 9 )
 
+[connection signal="body_entered" from="Basket/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Basket/Area2D" to="objectToThrow" method="_on_Area2D_body_entered"]
