@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Minigames/objectToThrow.gd" type="Script" id=1]
+[ext_resource path="res://Art/Minigame art/Throwgarbage/SeekPng.com_paper-ball-png_3694914.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Houses/TileMaps/WallHouse.tres" type="TileSet" id=3]
+[ext_resource path="res://Art/Minigame art/Throwgarbage/basket.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Minigames/Character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Minigames/Arrow.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.06226
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( 0, -1 )
+b = Vector2( 4, 27 )
+
+[sub_resource type="SegmentShape2D" id=3]
+b = Vector2( -4, 27 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 9.5, 4 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 78, 527 )
+
+[node name="objectToThrow" type="RigidBody2D" parent="."]
+position = Vector2( 175, -70 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="objectToThrow"]
+rotation = 3.14159
+scale = Vector2( 0.04, -0.04 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objectToThrow"]
+shape = SubResource( 1 )
+
+[node name="Wall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+
+[node name="TileMap" type="TileMap" parent="Wall"]
+position = Vector2( 7, -6 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -393203, 8, 524290, -262146, 8, 524288, -327667, 8, 524290, -196610, 8, 524288, -262131, 8, 524290, -131074, 8, 524288, -196595, 8, 524290, -65538, 8, 524288, -131059, 8, 524290, -2, 8, 524288, -65523, 8, 524290, 65534, 8, 524288, 13, 8, 524290, 131070, 8, 589824, 131071, 8, 589825, 65536, 8, 589825, 65537, 8, 589825, 65538, 8, 589825, 65539, 8, 589825, 65540, 8, 589825, 65541, 8, 589825, 65542, 8, 589825, 65543, 8, 589825, 65544, 8, 589825, 65545, 8, 589825, 65546, 8, 589825, 65547, 8, 589825, 65548, 8, 589825, 65549, 8, 589826 )
+
+[node name="Basket" type="StaticBody2D" parent="."]
+position = Vector2( 330, 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Basket"]
+position = Vector2( 1.5, -2 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
+position = Vector2( -13.5, -13 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Basket"]
+position = Vector2( 16.5, -13 )
+shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Basket"]
+position = Vector2( 2, 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/Area2D"]
+position = Vector2( -0.5, 7 )
+shape = SubResource( 4 )
+
+[node name="Character" parent="." instance=ExtResource( 5 )]
+show_behind_parent = true
+light_mask = 2
+position = Vector2( 0, 2 )
+
+[node name="Arrow" parent="." instance=ExtResource( 6 )]
+position = Vector2( 18, 9 )
+
+[connection signal="body_entered" from="Basket/Area2D" to="objectToThrow" method="_on_Area2D_body_entered"]
