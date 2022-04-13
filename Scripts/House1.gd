@@ -11,4 +11,4 @@ func _on_Area2D_body_entered(body):
 		player_exists = true
 	else:
 		#print("testing")
-		get_parent().goto_house_select()
+		get_tree().change_scene("res://Scenes/HouseSelect.tscn")

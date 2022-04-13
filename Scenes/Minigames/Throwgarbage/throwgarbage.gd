@@ -69,12 +69,13 @@ func _on_Area2D_body_entered(body):
 		spawn_item()
 
 func spawn_item():
-	object = preload("res://Scenes/Minigames/ThrowableObject.tscn").instance()
+	object = preload("res://Scenes/Minigames/Throwgarbage/ThrowableObject.tscn").instance()
 	add_child(object)
 	should_reset = false
 	picked_up = true
 	arrow.show()
 	
+
 func end_game():
 	pass
 	#queue_free()
