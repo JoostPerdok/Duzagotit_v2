@@ -31,7 +31,7 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 967, 254 )
 frames = SubResource( 1 )
-frame = 6
+frame = 10
 playing = true
 
 [node name="Button" type="Button" parent="."]
@@ -44,7 +44,7 @@ margin_top = 587.0
 margin_right = 1281.0
 margin_bottom = 774.0
 custom_fonts/font = ExtResource( 15 )
-text = "Start"
+text = "Play"
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 1925, 1081 )
