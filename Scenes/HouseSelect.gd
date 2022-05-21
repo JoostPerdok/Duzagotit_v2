@@ -1,8 +1,6 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal level_changed(next_level_name)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,10 +29,10 @@ func _process(delta):
 
 
 func _on_House1Button_pressed():
-	get_tree().change_scene("res://Scenes/Main.tscn")
+	emit_signal("level_changed", "Houses/House1")
 
 func _on_House2Button_pressed():
-	pass # Replace with function body.
+	emit_signal("level_changed", "Houses/House2")
 
 func _on_House3Button_pressed():
-	pass # Replace with function body.
+	emit_signal("level_changed", "Houses/House3")

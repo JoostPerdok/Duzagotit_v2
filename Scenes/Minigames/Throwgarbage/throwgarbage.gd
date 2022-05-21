@@ -1,5 +1,8 @@
 extends Node2D
 
+signal level_changed
+signal ask_question
+
 var arrow = null
 var object = null
 var picked_up = true
@@ -9,7 +12,7 @@ var score = 0
 var x = 600
 var y = 0
 
-const MAX_SCORE = 3
+const MAX_SCORE = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,8 +43,6 @@ func _physics_process(delta):
 func _input(event):
 	if Input.is_action_just_pressed("throw_ball"):
 		if picked_up == true:
-			print("Line 41")
-			print(object)
 			object.apply_impulse(Vector2(),Vector2(x, y*5))
 		picked_up = false
 		print(y)
@@ -81,5 +82,15 @@ func spawn_item():
 	
 
 func end_game():
-	pass
+	$HUD.show_message("Well Done! Your room is now cleaned up!")
+	$End_game.start()
 	#queue_free()
+
+
+func _on_End_game_timeout():
+	emit_signal("ask_question", "Houses/House1")
+	#emit_signal("level_changed", "Houses/House1")
+
+
+func _on_Node2D_ready():
+	print("test ready")

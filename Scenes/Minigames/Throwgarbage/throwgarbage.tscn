@@ -118,4 +118,10 @@ shape = SubResource( 13 )
 position = Vector2( 644, 187 )
 scale = Vector2( 0.15, 0.15 )
 
+[node name="End_game" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="ready" from="." to="." method="_on_Node2D_ready"]
 [connection signal="body_entered" from="Basket/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="End_game" to="." method="_on_End_game_timeout"]

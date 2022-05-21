@@ -4,8 +4,8 @@ extends Node
 func new_game():
 	var position = (Vector2(600,900))
 	
-	$Player.show()
-	print($Player.get_index())
+	#$Player.show()
+	#print($Player.get_index())
 	
 	#load level
 	#get_tree().change_scene("res://Scenes/Houses/House1.tscn")
@@ -18,3 +18,5 @@ func _ready():
 	#$Player.hide()
 	new_game()
 	randomize()
+	
+	

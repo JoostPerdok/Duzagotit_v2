@@ -9,7 +9,7 @@ const margin_offset = 16
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
-	#set_text("Waarom zijn bananen krom?") #test
+	#set_text("Waarom zijn\n bananen krom? Ze groeien naar de zon.") #test
 
 func set_text(text, wait_time = 3):
 	visible = true
@@ -27,11 +27,32 @@ func set_text(text, wait_time = 3):
 	text_node.margin_right = text_size.x + margin_offset
 	text_bg.margin_right = text_size.x + margin_offset
 	
-	#Animation
-	$Tween.remove_all()
-	$Tween.interpolate_property(text_node, "percent_visible", 0, 1, duration)
-	$Tween.interpolate_property(text_bg, "margin_right", 0, text_size.x + margin_offset, duration)
-	$Tween.start()
+	if "\n" in text:
+		text_bg.margin_bottom = text_bg.margin_bottom * 2
+		text_node.margin_bottom = text_node.margin_bottom * 2
+		
+		var breakchar: float = text.find("\n") + 1
+		var end: float = text.length() - breakchar + 1
+		
+		if end > breakchar: 
+			text_size.x = text_size.x * ((end / text.length()))
+		else:
+			text_size.x = text_size.x * ((breakchar / text.length()))
+		
+		#Animation
+		$Tween.remove_all()
+		$Tween.interpolate_property(text_node, "percent_visible", 0, 1, duration)
+		$Tween.interpolate_property(text_bg, "margin_right", 0, text_size.x + margin_offset, duration / 2)
+		$Tween.start()
+	
+	else:
+		#Animation
+		$Tween.remove_all()
+		$Tween.interpolate_property(text_node, "percent_visible", 0, 1, duration)
+		$Tween.interpolate_property(text_bg, "margin_right", 0, text_size.x + margin_offset, duration)
+		$Tween.start()
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

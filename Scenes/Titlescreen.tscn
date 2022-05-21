@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Art/Images/Titlescreen/duza_2.png" type="Texture" id=1]
 [ext_resource path="res://Art/Images/Titlescreen/duza_14.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Art/Images/Titlescreen/duza_13.png" type="Texture" id=13]
 [ext_resource path="res://Art/Images/Titlescreen/duza_9.png" type="Texture" id=14]
 [ext_resource path="res://Art/Calibri.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Scenes/Titlescreen.gd" type="Script" id=16]
+[ext_resource path="res://Art/living_room-_1_.ogv" type="VideoStream" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,11 +29,19 @@ animations = [ {
 [sub_resource type="LargeTexture" id=2]
 
 [node name="Titlescreen" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -66.0
+margin_top = -66.0
+margin_right = 1953.0
+margin_bottom = 1112.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 967, 254 )
 frames = SubResource( 1 )
-frame = 10
+frame = 13
 playing = true
 
 [node name="Button" type="Button" parent="."]
@@ -49,3 +59,16 @@ text = "Play"
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 1925, 1081 )
 texture = SubResource( 2 )
+
+[node name="VideoTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1919.0
+margin_bottom = 1080.0
+stream = ExtResource( 17 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="VideoTimer" to="." method="_on_VideoTimer_timeout"]
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
