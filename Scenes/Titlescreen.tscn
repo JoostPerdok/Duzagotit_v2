@@ -41,7 +41,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 967, 254 )
 frames = SubResource( 1 )
-frame = 13
+frame = 12
 playing = true
 
 [node name="Button" type="Button" parent="."]
@@ -61,7 +61,6 @@ scale = Vector2( 1925, 1081 )
 texture = SubResource( 2 )
 
 [node name="VideoTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]

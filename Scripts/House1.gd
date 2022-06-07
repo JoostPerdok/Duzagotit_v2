@@ -20,5 +20,5 @@ func _on_Area2D_body_entered(body):
 
 func _process(delta):
 	if Input.is_action_pressed("start_minigame"):
-		emit_signal("level_changed", "Minigames/Throwgarbage/throwgarbage")
+		emit_signal("level_changed", "Minigames/Tshirt/TshirtLevel1")
 		

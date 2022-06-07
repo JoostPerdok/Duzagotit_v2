@@ -12,17 +12,15 @@ var current_width = 17.5
 var mouse_hover = false
 
 func _ready():
-	$SpeechBubble.set_text("Dit zijn oude kleren, doe er wat leuks mee!")
+	$SpeechBubble.set_text("Dit T-shirt zat ook nog in de kast. Het is een beetje saai, \n" + 
+	"maar met deze verf en kwasten kan je er vast wat leuks mee!")
 	$Paintbuckets.greyout_buckets()
 	$Paintbuckets/Yellow.modulate = '#FFFFFF'
 	
+	current_line2D = Line2D.new()
 	current_line2D.set_default_color(current_color)
 	current_line2D.set_width(current_width)
 	$Shirt.add_child(current_line2D)
-	
-	$Shirt.connect("mouse_entered", self, "OnMouseEntry")
-	$Shirt.connect("mouse_exited", self, "OnMouseExit")
-
 
 
 func _input(event: InputEvent) -> void:
@@ -52,15 +50,16 @@ func _input(event: InputEvent) -> void:
 
 func _on_donation_button_pressed():
 	$AnimationPlayer.play("donate")
+	$Score.add_score(10)
 
 
 func _on_throw_away_button_pressed():
 	$AnimationPlayer.play("throwout")
-
+	$Score.add_score(0)
 
 func _on_keep_button_pressed():
 	$AnimationPlayer.play("keep")
-
+	$Score.add_score(5)
 
 func _on_Yellow_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -144,9 +143,9 @@ func _on_Small_pressed():
 	$Paintbrushes/Medium.texture_normal = load("res://Art/Minigame art/Tshirt/grey-dot.png")
 	$Paintbrushes/Small.texture_normal = load("res://Art/Minigame art/Tshirt/black-dot.png")
 
-
-func OnMouseEntry():
+func _on_Shirt_mouse_entered():
 	mouse_hover = true
 
-func OnMouseExit():
+
+func _on_Shirt_mouse_exited():
 	mouse_hover = false
