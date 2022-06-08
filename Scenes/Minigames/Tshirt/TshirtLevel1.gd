@@ -1,5 +1,8 @@
 extends Node2D
 
+signal update_score
+signal level_changed
+
 var current_clothing
 var next_level
 
@@ -10,10 +13,11 @@ var donate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Score/Control.hide()
 	$Scissors.hide()
 	$Poof.hide()
 	$BrokenShorts.hide()
-	part1()
+	part7()
 
 
 func part1():	# Dirty shirt
@@ -72,9 +76,13 @@ func part6():
 
 func part7():
 	current_clothing = $BrokenShorts
-	$Brokenshorts.show()
+	$BrokenShorts.show()
 	$SpeechBubble.set_text("Deze broek is alleen aan de onderkant kapot, \n misschien kunnen we er een korte broek van maken!")
 	$AnimationPlayer.set_animation("BrokenShorts")
+	
+	throwout = 0
+	keep = 5
+	donate = 10
 	
 	# hide buttons
 	$throw_away_button.hide()
@@ -84,25 +92,25 @@ func part7():
 	$Scissors.show()
 
 func end():
-	get_tree().change_scene("res://Scenes/Minigames/Tshirt/Tshirt.tscn")
+	emit_signal("level_changed", "Minigames/Tshirt/Tshirt")
 
 func _on_keep_button_pressed():
 	$AnimationPlayer.play("keep")
 	yield(get_node("AnimationPlayer"), "animation_finished")
-	$Score.add_score(keep)
+	$Score.update_score(keep)
 	call(next_level)
 
 func _on_donation_button_pressed():
 	$AnimationPlayer.play("donate")
 	yield(get_node("AnimationPlayer"), "animation_finished")
-	$Score.add_score(donate)
+	$Score.update_score(donate)
 	call(next_level)
 
 
 func _on_throw_away_button_pressed():
 	$AnimationPlayer.play("throwout")
 	yield(get_node("AnimationPlayer"), "animation_finished")
-	$Score.add_score(throwout)
+	$Score.update_score(throwout)
 	call(next_level)
 
 

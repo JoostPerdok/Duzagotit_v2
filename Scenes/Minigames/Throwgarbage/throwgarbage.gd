@@ -79,7 +79,7 @@ func spawn_item():
 	should_reset = false
 	picked_up = true
 	arrow.show()
-	
+
 
 func end_game():
 	$HUD.show_message("Well Done! Your room is now cleaned up!")

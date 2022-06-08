@@ -1,5 +1,8 @@
 extends Node2D
 
+signal ask_question
+signal update_score
+
 
 onready var current_line2D = Line2D.new()
 var curve2d : Curve2D
@@ -12,6 +15,7 @@ var current_width = 17.5
 var mouse_hover = false
 
 func _ready():
+	$Score/Control.hide()
 	$SpeechBubble.set_text("Dit T-shirt zat ook nog in de kast. Het is een beetje saai, \n" + 
 	"maar met deze verf en kwasten kan je er vast wat leuks mee!")
 	$Paintbuckets.greyout_buckets()
@@ -50,16 +54,19 @@ func _input(event: InputEvent) -> void:
 
 func _on_donation_button_pressed():
 	$AnimationPlayer.play("donate")
-	$Score.add_score(10)
+	$Score.update_score(10)
+	$End_game.start()
 
 
 func _on_throw_away_button_pressed():
 	$AnimationPlayer.play("throwout")
-	$Score.add_score(0)
+	$Score.update_score(0)
+	$End_game.start()
 
 func _on_keep_button_pressed():
 	$AnimationPlayer.play("keep")
-	$Score.add_score(5)
+	$Score.update_score(5)
+	$End_game.start()
 
 func _on_Yellow_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -123,7 +130,6 @@ func _on_Large_pressed():
 	$Paintbrushes/Large.texture_normal = load("res://Art/Minigame art/Tshirt/black-dot.png")
 	$Paintbrushes/Medium.texture_normal = load("res://Art/Minigame art/Tshirt/grey-dot.png")
 	$Paintbrushes/Small.texture_normal = load("res://Art/Minigame art/Tshirt/grey-dot.png")
-	
 
 
 func _on_Medium_pressed():
@@ -149,3 +155,8 @@ func _on_Shirt_mouse_entered():
 
 func _on_Shirt_mouse_exited():
 	mouse_hover = false
+
+
+func _on_End_game_timeout():
+	$Cat.hide()
+	emit_signal("ask_question", "Houses/House1")

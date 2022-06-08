@@ -1,11 +1,10 @@
 extends Node
 
-var score
+var score = 0
 
 # main
 func new_game():
 	var position = (Vector2(600,900))
-	connect("add_score", self, "handle_add_score")
 	#$Player.show()
 	#print($Player.get_index())
 	
@@ -20,8 +19,16 @@ func _ready():
 	#$Player.hide()
 	new_game()
 	randomize()
-	
-	
 
-func handle_add_score():
-	print("add score")
+func _process(delta):
+	if $SceneSwitcher.current_level_name == "Houses/House1":
+		$Score/Control/TextureProgress.show()
+	elif $SceneSwitcher.current_level_name == "HouseSelect": 
+		#show all progress bars
+		pass
+	else:
+		$Score/Control/TextureProgress.hide()
+
+func handle_update_score(add_score):
+	score += add_score
+	$Score.update_score(score)
