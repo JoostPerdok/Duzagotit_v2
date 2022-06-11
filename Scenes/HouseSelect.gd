@@ -29,7 +29,7 @@ func _process(delta):
 
 
 func _on_House1Button_pressed():
-	emit_signal("level_changed", "Houses/House1")
+	emit_signal("level_changed", "Houses/House1_floor1")
 
 func _on_House2Button_pressed():
 	emit_signal("level_changed", "Houses/House2")

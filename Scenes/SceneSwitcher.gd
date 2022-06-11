@@ -9,8 +9,8 @@ func _ready():
 
 func handle_level_changed(next_level_name: String):
 	var next_level = load("res://Scenes/" + next_level_name + ".tscn").instance()
-	print(current_level, next_level, next_level_name)
-	add_child(next_level)
+	#print(current_level, next_level, next_level_name)
+	call_deferred("add_child", next_level)
 	next_level.connect("level_changed", self, "handle_level_changed")
 	next_level.connect("ask_question", self, "handle_ask_question")
 	next_level.connect("update_score", get_parent(), "handle_update_score")

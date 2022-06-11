@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Images/Houses/house1_floor2.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Houses/House1_floor2.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Houses/Highlight.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 46.5, 84 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 97.5, 127.25 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 335.5, 110.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 142, 223.063 )
+
+[node name="House1_floor2" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="House" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="House"]
+position = Vector2( 1010.5, 552 )
+scale = Vector2( 1.85936, 1.57675 )
+texture = ExtResource( 2 )
+
+[node name="Collisionwalls" type="StaticBody2D" parent="House"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Collisionwalls"]
+position = Vector2( 440, 844 )
+shape = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="House/Collisionwalls"]
+polygon = PoolVector2Array( 1315, 1071, 1315, 867, 1220, 869, 1222, 1027, 977, 1029, 975, 767, 1299, 765, 1350, 748, 1349, 697, 1335, 687, 935, 689, 922, 721, 922, 1018, 552, 1018, 554, 670, 531, 640, 505, 642, 508, 1073 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="House/Collisionwalls"]
+polygon = PoolVector2Array( 503, 1019, 245, 1022, 251, 868, 186, 790, 162, 792, 108, 857, 105, 1017, 64, 1016, 68, 573, 116, 614, 164, 614, 210, 568, 205, 532, 176, 517, 173, 492, 248, 489, 249, 509, 295, 548, 434, 544, 456, 527, 453, 490, 483, 489, 508, 517, 540, 517, 557, 479, 911, 478, 934, 446, 11, 447, 10, 1071, 507, 1075 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="House/Collisionwalls"]
+polygon = PoolVector2Array( 928, 431, 10, 434, 6, 11, 1548, 5, 1545, 448, 1113, 452, 1094, 419, 1099, 392, 1127, 392, 1127, 309, 1272, 312, 1275, 269, 1374, 268, 1376, 316, 1461, 320, 1459, 391, 1521, 391, 1528, 29, 1468, 26, 1485, 86, 1379, 95, 1354, 168, 724, 170, 676, 138, 670, 73, 73, 73, 73, 141, 536, 135, 537, 373, 76, 371, 76, 394, 920, 399 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="House/Collisionwalls"]
+polygon = PoolVector2Array( 1314, 1020, 1521, 1019, 1520, 684, 1547, 685, 1567, 712, 1591, 709, 1595, 1018, 1860, 1019, 1856, 955, 1762, 955, 1731, 915, 1746, 878, 1764, 840, 1766, 788, 1858, 786, 1862, 688, 1739, 689, 1735, 449, 1866, 456, 1859, 378, 1677, 378, 1672, 67, 1581, 68, 1581, 567, 1524, 544, 1523, 486, 1126, 481, 1116, 454, 1545, 451, 1551, 25, 1896, 28, 1893, 1057, 1315, 1060 )
+
+[node name="Stairs" type="Area2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Stairs"]
+position = Vector2( 1074.5, 895.75 )
+shape = SubResource( 2 )
+
+[node name="WardrobeGame" type="Area2D" parent="House"]
+
+[node name="Wardrobe" type="CollisionShape2D" parent="House/WardrobeGame"]
+position = Vector2( 1008, 150.5 )
+shape = SubResource( 3 )
+
+[node name="WardrobeHighlight" type="Polygon2D" parent="House/WardrobeGame"]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 669, 41, 671, 141, 690, 139, 693, 148, 714, 148, 729, 171, 1347, 171, 1350, 65, 1341, 45 )
+script = ExtResource( 4 )
+
+[node name="ThrowGarbageGame" type="Area2D" parent="House"]
+
+[node name="Garbage" type="CollisionShape2D" parent="House/ThrowGarbageGame"]
+position = Vector2( 1722, 797.063 )
+shape = SubResource( 4 )
+
+[node name="GarbageHighlight" type="Polygon2D" parent="House/ThrowGarbageGame"]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 1778, 953, 1808, 953, 1836, 943, 1849, 922, 1845, 896, 1827, 871, 1804, 858, 1767, 860, 1754, 868, 1734, 897, 1735, 916, 1745, 934 )
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1276, 805 )
+
+[connection signal="body_entered" from="House/Stairs" to="." method="_on_Stairs_body_entered"]
+[connection signal="body_entered" from="House/WardrobeGame" to="." method="_on_WardrobeGame_body_entered"]
+[connection signal="body_exited" from="House/WardrobeGame" to="." method="_on_WardrobeGame_body_exited"]
+[connection signal="body_entered" from="House/ThrowGarbageGame" to="." method="_on_ThrowGarbageGame_body_entered"]
+[connection signal="body_exited" from="House/ThrowGarbageGame" to="." method="_on_ThrowGarbageGame_body_exited"]

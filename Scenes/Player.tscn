@@ -1,7 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Art/Images/charactersheet2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Art/Images/player/Main_character_walk_1.png" type="Texture" id=3]
+[ext_resource path="res://Art/Images/player/main_character_walk_2.png" type="Texture" id=4]
+[ext_resource path="res://Art/Images/player/Main_character_walk_3.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
@@ -33,36 +36,6 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 64, 32, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 96, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 32, 96, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 64, 96, 32, 32 )
-
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
@@ -70,28 +43,28 @@ animations = [ {
 "name": "walkR",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walkU",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "walkL",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walkD",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "walkU",
 "speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 7.66254
+radius = 18.7142
 
 [sub_resource type="CapsuleShape2D" id=15]
-radius = 10.8543
-height = 9.27594
+radius = 16.6667
+height = 48.9581
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
@@ -99,11 +72,15 @@ collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 13 )
-animation = "walkU"
+animation = "walkD"
+frame = 2
+playing = true
+flip_v = true
 
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10.4879 )
+position = Vector2( -4, 4 )
 shape = SubResource( 14 )
 
 [node name="InteractArea" type="Area2D" parent="."]
@@ -111,6 +88,6 @@ collision_mask = 4
 
 [node name="InteractionShape" type="CollisionShape2D" parent="InteractArea"]
 light_mask = 2
-position = Vector2( 0.167094, 1.11768 )
+position = Vector2( -0.666667, 0 )
 shape = SubResource( 15 )
 disabled = true

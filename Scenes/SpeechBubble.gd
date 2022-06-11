@@ -3,7 +3,7 @@ extends Node2D
 onready var text_node = $Anchor/RichTextLabel
 onready var text_bg = $Anchor/ColorRect
 
-const char_time = 0.05
+const char_time = 0.04
 const margin_offset = 16
 
 # Called when the node enters the scene tree for the first time.

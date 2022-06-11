@@ -15,7 +15,7 @@ var current_width = 17.5
 var mouse_hover = false
 
 func _ready():
-	$Score/Control.hide()
+	$Score.hide()
 	$SpeechBubble.set_text("Dit T-shirt zat ook nog in de kast. Het is een beetje saai, \n" + 
 	"maar met deze verf en kwasten kan je er vast wat leuks mee!")
 	$Paintbuckets.greyout_buckets()

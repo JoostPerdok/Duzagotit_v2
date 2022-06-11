@@ -1,0 +1,49 @@
+extends Node2D
+
+signal level_changed(next_level_name)
+
+var player
+var interact_wardrobe = false
+var interact_garbage = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$House/WardrobeGame/WardrobeHighlight.hide()
+	pass
+
+
+func _on_Stairs_body_entered(body):
+	emit_signal("level_changed", "Houses/House1_floor1")
+
+
+func _process(delta):
+	if Input.is_action_pressed("start_minigame"):
+		emit_signal("level_changed", "Minigames/Tshirt/TshirtLevel1")
+	
+	if Input.is_action_pressed("ui_accept") and interact_wardrobe == true:
+		emit_signal("level_changed", "Minigames/Tshirt/TshirtLevel1")
+	
+	if Input.is_action_pressed("ui_accept") and interact_garbage == true:
+		emit_signal("level_changed", "Minigames/Throwgarbage/throwgarbage")
+
+
+func _on_WardrobeGame_body_entered(body):
+	if body == $Player:
+		$House/WardrobeGame/WardrobeHighlight.show()
+		interact_wardrobe = true
+
+func _on_WardrobeGame_body_exited(body):
+	if body == $Player:
+		$House/WardrobeGame/WardrobeHighlight.hide()
+		interact_wardrobe = false
+
+
+func _on_ThrowGarbageGame_body_entered(body):
+	if body == $Player:
+		$House/ThrowGarbageGame/GarbageHighlight.show()
+		interact_garbage = true
+
+func _on_ThrowGarbageGame_body_exited(body):
+	if body == $Player:
+		$House/ThrowGarbageGame/GarbageHighlight.hide()
+		interact_garbage = true

@@ -31,4 +31,4 @@ func _process(delta):
 
 func handle_update_score(add_score):
 	score += add_score
-	$Score.update_score(score)
+	$Score.update_score(add_score)

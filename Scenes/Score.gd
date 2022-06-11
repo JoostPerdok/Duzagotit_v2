@@ -29,6 +29,7 @@ func update_score(score: int):
 	if score == 10:
 		$CanvasLayer/Message.add_color_override("font_color", Color(0,255,0))
 	$CanvasLayer/AnimationPlayer.play("show_message")
+	print(get_parent())
 	get_parent().emit_signal("update_score", score)
 	#$CanvasLayer.update_score(score)
 	$Control.update_bar(score)
