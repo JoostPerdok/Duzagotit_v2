@@ -159,4 +159,4 @@ func _on_Shirt_mouse_exited():
 
 func _on_End_game_timeout():
 	$Cat.hide()
-	emit_signal("ask_question", "Houses/House1")
+	emit_signal("ask_question", "Houses/House1_floor2")

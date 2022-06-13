@@ -88,7 +88,7 @@ func end_game():
 
 
 func _on_End_game_timeout():
-	emit_signal("ask_question", "Houses/House1")
+	emit_signal("ask_question", "Houses/House1_floor2")
 	#emit_signal("level_changed", "Houses/House1")
 
 
