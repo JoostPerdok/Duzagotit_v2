@@ -1,26 +1,292 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Art/Images/Houses/house1_floor1.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Houses/House1_floor1.gd" type="Script" id=3]
+[ext_resource path="res://Art/Minigame art/RubbishFriend/Sock_for_fubbish_friend_.png" type="Texture" id=4]
+[ext_resource path="res://Art/Minigame art/RubbishFriend/New Piskel.png" type="Texture" id=5]
+[ext_resource path="res://Art/Minigame art/RubbishFriend/marker_rubbish_friend.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 78.0625, 166.5 )
+extents = Vector2( 77.5, 141 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 950.5, 28 )
+extents = Vector2( 826.5, 23.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 39.5, 326.25 )
+extents = Vector2( 34.75, 271.625 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 92.25, 197.25 )
+extents = Vector2( 83.125, 163.125 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 60, 39 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 69, 7.375 )
+extents = Vector2( 74.5, 5.54688 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 86.75, 128.25 )
+extents = Vector2( 80.5, 102 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.10559, 0.664596, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.681529, 0.681529, 0.681529, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_disable_z = true
+spread = 46.77
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 15 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 865.512, 565.587 )
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sock:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1571, 270 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sock:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pen:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 517, 530 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pen:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pen:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.001 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 78.6 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Pen/Particles2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sock/Particles2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Pen/Particles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sock:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Pen:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "pickup_pen"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 517, 530 ), Vector2( 929, 537 ), Vector2( 929, 537 ), Vector2( 196, 1182 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pen:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pen:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -74.1, -15.9, -15.9, 64.1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pen/Particles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pen:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "pickup_sock"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sock:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1571, 259 ), Vector2( 1056, 508 ), Vector2( 1056, 508 ), Vector2( 176, 1223 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sock:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sock/Particles2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sock:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="House1_floor1" type="Node2D"]
 script = ExtResource( 3 )
@@ -28,49 +294,117 @@ script = ExtResource( 3 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
-position = Vector2( 1012.47, 545.25 )
-scale = Vector2( 1.85444, 1.58717 )
+position = Vector2( 995, 558 )
+scale = Vector2( 1.61309, 1.30784 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 1000, 1000 )
 
 [node name="CollisionWalls" type="StaticBody2D" parent="Area2D"]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
-position = Vector2( 1440.94, 405.5 )
+[node name="Couch" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
+position = Vector2( 1367.5, 441 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
-position = Vector2( 964.5, 26 )
+position = Vector2( 949.5, 131.5 )
 shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D/CollisionWalls"]
-polygon = PoolVector2Array( 31, 653, 204, 652, 224, 685, 225, 872, 657, 874, 658, 952, 828, 950, 825, 925, 895, 928, 890, 737, 938, 683, 1344, 683, 1344, 737, 1336, 748, 1314, 750, 1314, 852, 1281, 887, 1255, 883, 1224, 858, 1222, 760, 982, 760, 978, 1025, 1235, 1025, 1247, 1014, 1281, 1012, 1305, 1033, 1305, 1055, 1352, 1055, 1355, 1072, 35, 1072 )
+polygon = PoolVector2Array( 123, 646, 293, 646, 310, 667, 313, 823, 689, 827, 691, 890, 827, 889, 827, 868, 889, 868, 888, 718, 935, 670, 1278, 671, 1288, 678, 1288, 726, 1258, 728, 1258, 815, 1231, 836, 1204, 838, 1175, 815, 1180, 733, 965, 733, 964, 950, 1191, 954, 1196, 944, 1229, 943, 1249, 960, 1248, 976, 1289, 977, 1290, 993, 122, 990 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
-position = Vector2( 43.5, 326.75 )
+position = Vector2( 156.25, 377.375 )
 shape = SubResource( 3 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D/CollisionWalls"]
-polygon = PoolVector2Array( 1541, 1053, 1570, 1053, 1566, 950, 1589, 929, 1656, 933, 1656, 1030, 1857, 1031, 1857, 751, 1660, 753, 1658, 826, 1621, 827, 1578, 779, 1579, 753, 1556, 750, 1533, 742, 1532, 709, 1558, 681, 1760, 684, 1756, 184, 1813, 108, 1859, 108, 1856, 56, 1917, 57, 1912, 1074, 1542, 1071 )
+position = Vector2( -15, -45 )
+polygon = PoolVector2Array( 1461, 1020, 1492, 1020, 1491, 935, 1510, 921, 1571, 923, 1578, 991, 1744, 990, 1745, 774, 1573, 774, 1570, 836, 1541, 837, 1503, 798, 1504, 773, 1481, 773, 1461, 764, 1462, 739, 1482, 717, 1658, 719, 1657, 308, 1702, 248, 1744, 249, 1740, 155, 1796, 146, 1797, 1041, 1682, 1041, 1526, 1041, 1463, 1040 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
-position = Vector2( 436.75, 345.75 )
+position = Vector2( 494.875, 393.875 )
 shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
+position = Vector2( 981, 207 )
+shape = SubResource( 11 )
 
 [node name="Frontdoor" type="Area2D" parent="Area2D"]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Area2D/Frontdoor"]
-position = Vector2( 1443, 1061 )
+position = Vector2( 1374, 1011 )
+scale = Vector2( 1.75, 1.75 )
 shape = SubResource( 5 )
 
 [node name="Stairs" type="Area2D" parent="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Stairs"]
-position = Vector2( 1069.25, 891.75 )
+position = Vector2( 1050.5, 842 )
 shape = SubResource( 6 )
 
+[node name="Sock" type="Area2D" parent="."]
+position = Vector2( 1571, 270 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Sock"]
+position = Vector2( -1408.85, 244.614 )
+rotation = 1.09258
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+offset = Vector2( 4340.27, -13731.8 )
+
+[node name="Particles2D" type="Particles2D" parent="Sock"]
+position = Vector2( -3.98157, 0.0182495 )
+amount = 4
+lifetime = 2.0
+process_material = SubResource( 9 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sock"]
+position = Vector2( 3.01843, -3.48242 )
+rotation = 1.57255
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 10 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1376, 942 )
+position = Vector2( 1367, 855 )
+scale = Vector2( 2, 2 )
+
+[node name="Pen" type="Area2D" parent="."]
+position = Vector2( 517, 530 )
+rotation = 1.37183
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Pen"]
+position = Vector2( -210, 697 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 6 )
+offset = Vector2( 4340.27, -13731.8 )
+
+[node name="Particles2D" type="Particles2D" parent="Pen"]
+position = Vector2( -3, 7.49994 )
+amount = 4
+lifetime = 2.0
+process_material = SubResource( 9 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pen"]
+position = Vector2( -29.2141, 7.45258 )
+rotation = 1.57255
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 12 )
+anims/pickup_pen = SubResource( 14 )
+anims/pickup_sock = SubResource( 13 )
 
 [connection signal="body_entered" from="Area2D/Frontdoor" to="." method="_on_Frontdoor_body_entered"]
 [connection signal="body_entered" from="Area2D/Stairs" to="." method="_on_Stairs_body_entered"]
+[connection signal="body_entered" from="Sock" to="." method="_on_Sock_body_entered"]
+[connection signal="body_exited" from="Sock" to="." method="_on_Sock_body_exited"]
+[connection signal="body_entered" from="Pen" to="." method="_on_Pen_body_entered"]
+[connection signal="body_exited" from="Pen" to="." method="_on_Pen_body_exited"]

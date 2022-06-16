@@ -7,6 +7,7 @@ radius = 22.0
 
 [node name="ThrowableObject" type="RigidBody2D"]
 position = Vector2( 44, 54 )
+scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

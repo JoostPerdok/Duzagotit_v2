@@ -1,8 +1,9 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/HUD.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Art/Minigame art/Throwgarbage/throwgarbage_background.png" type="Texture" id=2]
+[ext_resource path="res://Art/Minigame art/Throwgarbage/bedroom_game_n1_copy.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/Cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ScoreMessage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/Character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/Arrow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/throwgarbage.gd" type="Script" id=7]
@@ -11,34 +12,31 @@
 extents = Vector2( 63.375, 10.5 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 5.375, 54.3125 )
+extents = Vector2( 11.0938, 110.25 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 5.34375, 55.3125 )
+extents = Vector2( 10.1719, 114.656 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 74.5625, 4.0625 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 17.75, 286.75 )
+extents = Vector2( 19, 538 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 5, 15.5 )
+extents = Vector2( 5, 25.25 )
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 4.54498, 24.2471 )
+extents = Vector2( 4.54498, 46.9381 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 1025.7, 80.5161 )
+extents = Vector2( 1330.92, 43.296 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 18.5, 505 )
-
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 4.25, 463.5 )
+extents = Vector2( 18.5, 540 )
 
 [sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 641.5, 10 )
+extents = Vector2( 958, 10 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 78, 527 )
@@ -46,14 +44,16 @@ script = ExtResource( 7 )
 
 [node name="Background" type="Sprite" parent="."]
 light_mask = 4
-position = Vector2( 561, -15.9999 )
-scale = Vector2( 0.621582, 0.496582 )
+position = Vector2( 883.25, 12.4844 )
+scale = Vector2( 0.936279, 0.938395 )
 texture = ExtResource( 2 )
 
 [node name="Character" parent="." instance=ExtResource( 5 )]
-position = Vector2( 34, 204 )
+position = Vector2( 60, 253 )
+scale = Vector2( 4, 4 )
 
 [node name="Basket" type="StaticBody2D" parent="."]
+visible = false
 light_mask = 8
 position = Vector2( 293, 12 )
 
@@ -61,36 +61,36 @@ position = Vector2( 293, 12 )
 position = Vector2( 644, 258 )
 
 [node name="BinBottom" type="CollisionShape2D" parent="Basket/Area2D"]
-position = Vector2( 146.625, -21 )
+position = Vector2( 734, 147 )
 shape = SubResource( 4 )
 
 [node name="BinCollision1" type="CollisionShape2D" parent="Basket"]
-position = Vector2( 720.625, 194.688 )
+position = Vector2( 1268.91, 430.75 )
 shape = SubResource( 5 )
 
 [node name="BinCollision2" type="CollisionShape2D" parent="Basket"]
-position = Vector2( 859.656, 194.688 )
+position = Vector2( 1484.83, 422.344 )
 shape = SubResource( 6 )
 
 [node name="BinCollision3" type="CollisionShape2D" parent="Basket"]
-position = Vector2( 789.438, 252.938 )
+position = Vector2( 1372, 533 )
 shape = SubResource( 7 )
 
 [node name="HoopCollision1" type="CollisionShape2D" parent="Basket"]
-position = Vector2( 884.75, -35.25 )
+position = Vector2( 1529, 1 )
 shape = SubResource( 8 )
 
 [node name="HoopCollision2" type="CollisionShape2D" parent="Basket"]
-position = Vector2( 740, -234.5 )
+position = Vector2( 1300, -359 )
 shape = SubResource( 9 )
 
 [node name="HoopCollision3" type="CollisionShape2D" parent="Basket"]
-position = Vector2( 753, -200 )
+position = Vector2( 1324.16, -289.271 )
 rotation = -0.548033
 shape = SubResource( 14 )
 
 [node name="Arrow" parent="." instance=ExtResource( 6 )]
-position = Vector2( 19, 280 )
+position = Vector2( 164, 442 )
 scale = Vector2( 3, 3 )
 
 [node name="HUD" parent="." instance=ExtResource( 1 )]
@@ -98,29 +98,27 @@ scale = Vector2( 3, 3 )
 [node name="RoomCollisionWalls" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomCollisionWalls"]
-position = Vector2( 561.446, 453 )
+position = Vector2( 748.722, 532.5 )
 scale = Vector2( 0.621582, 0.496582 )
 shape = SubResource( 10 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomCollisionWalls"]
-position = Vector2( -57.5, -18 )
+position = Vector2( -59, 13 )
 shape = SubResource( 11 )
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomCollisionWalls"]
-position = Vector2( 1202.75, -56.5 )
-shape = SubResource( 12 )
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="RoomCollisionWalls"]
-position = Vector2( 563.5, -517 )
+position = Vector2( 880, -517 )
 shape = SubResource( 13 )
 
 [node name="Cat" parent="." instance=ExtResource( 3 )]
-position = Vector2( 644, 187 )
-scale = Vector2( 0.15, 0.15 )
+position = Vector2( 814, 254 )
+scale = Vector2( 0.2, 0.2 )
 
 [node name="End_game" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="ScoreMessage" parent="." instance=ExtResource( 4 )]
 
 [connection signal="ready" from="." to="." method="_on_Node2D_ready"]
 [connection signal="body_entered" from="Basket/Area2D" to="." method="_on_Area2D_body_entered"]

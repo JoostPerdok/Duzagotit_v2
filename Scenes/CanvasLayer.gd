@@ -12,6 +12,14 @@ func _ready():
 
 
 func show_message(text):
-	$Message.text = text
+	$Message.text = "+" + str(text)
+	
+	if text == 0:
+		$Message.add_color_override("font_color", Color(255,0,0))
+	if text == 5:
+		$Message.add_color_override("font_color", Color(255,255,255))
+	if text == 10:
+		$Message.add_color_override("font_color", Color(0,255,0))
+	
 	$AnimationPlayer.play("show_message")
 

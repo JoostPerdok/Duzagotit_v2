@@ -13,11 +13,10 @@ var donate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Score/Control.hide()
 	$Scissors.hide()
 	$Poof.hide()
 	$BrokenShorts.hide()
-	part7()
+	part1()
 
 
 func part1():	# Dirty shirt
@@ -97,26 +96,30 @@ func end():
 func _on_keep_button_pressed():
 	$AnimationPlayer.play("keep")
 	yield(get_node("AnimationPlayer"), "animation_finished")
-	$Score.update_score(keep)
+	Global.total_score += keep
+	$ScoreMessage/CanvasLayer.show_message(keep)
 	call(next_level)
 
 func _on_donation_button_pressed():
 	$AnimationPlayer.play("donate")
 	yield(get_node("AnimationPlayer"), "animation_finished")
-	$Score.update_score(donate)
+	Global.total_score += donate
+	$ScoreMessage/CanvasLayer.show_message(donate)
 	call(next_level)
 
 
 func _on_throw_away_button_pressed():
 	$AnimationPlayer.play("throwout")
 	yield(get_node("AnimationPlayer"), "animation_finished")
-	$Score.update_score(throwout)
+	Global.total_score += throwout
+	$ScoreMessage/CanvasLayer.show_message(throwout)
 	call(next_level)
 
 
 func _on_ScissorsButton_pressed():
 	$AnimationPlayer.play("cut_pants")
 	yield(get_node("AnimationPlayer"), "animation_finished") # wait for animation to finish
+	$Scissors.hide()
 	$AnimationPlayer.set_animation("GoodShorts")
 	$SpeechBubble.set_text("Goed gedaan! Wat wil je nu met deze broek doen?")
 	next_level = "end"

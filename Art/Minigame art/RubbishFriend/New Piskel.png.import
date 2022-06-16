@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/main_character_walk_2.png-dd4d3d77e1fdfb5a984d01ae75fab051.stex"
+path="res://.import/New Piskel.png-d4900a63c974f13698e1e55c5c4e1e32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Images/player/main_character_walk_2.png"
-dest_files=[ "res://.import/main_character_walk_2.png-dd4d3d77e1fdfb5a984d01ae75fab051.stex" ]
+source_file="res://Art/Minigame art/RubbishFriend/New Piskel.png"
+dest_files=[ "res://.import/New Piskel.png-d4900a63c974f13698e1e55c5c4e1e32.stex" ]
 
 [params]
 

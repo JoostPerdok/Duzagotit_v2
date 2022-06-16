@@ -12,6 +12,10 @@ func _ready():
 	#set_text("Waarom zijn\n bananen krom? Ze groeien naar de zon.") #test
 
 func set_text(text, wait_time = 3):
+	# reset margin_bottom
+	text_bg.margin_bottom = 84
+	text_node.margin_bottom = 128
+	
 	visible = true
 	
 	$Timer.wait_time = wait_time
@@ -28,8 +32,9 @@ func set_text(text, wait_time = 3):
 	text_bg.margin_right = text_size.x + margin_offset
 	
 	if "\n" in text:
-		text_bg.margin_bottom = text_bg.margin_bottom * 2
-		text_node.margin_bottom = text_node.margin_bottom * 2
+		var amountoflines = text.count("\n") + 1
+		text_bg.margin_bottom = text_bg.margin_bottom * amountoflines
+		text_node.margin_bottom = text_node.margin_bottom * amountoflines
 		
 		var breakchar: float = text.find("\n") + 1
 		var end: float = text.length() - breakchar + 1

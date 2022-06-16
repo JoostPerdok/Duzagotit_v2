@@ -15,21 +15,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("throw_ball"):	#spacebar
-		$CanvasLayer/AnimationPlayer.play("show_message")
-		score += 10
-		$Control.update_bar(score)
+	#if Input.is_action_just_pressed("throw_ball"):	#spacebar
+		#$CanvasLayer/AnimationPlayer.play("show_message")
+		#score += 10
+	score = Global.total_score
+	$Control.update_bar(score)
 
-func update_score(score: int):
-	$CanvasLayer/Message.text = "+" + String(score)
-	if score == 0:
+func update_score(added_score: int):
+	$CanvasLayer/Message.text = "+" + String(added_score)
+	if added_score == 0:
 		$CanvasLayer/Message.add_color_override("font_color", Color(255,0,0))
-	if score == 5:
+	if added_score == 5:
 		$CanvasLayer/Message.add_color_override("font_color", Color(255,255,255))
-	if score == 10:
+	if added_score == 10:
 		$CanvasLayer/Message.add_color_override("font_color", Color(0,255,0))
 	$CanvasLayer/AnimationPlayer.play("show_message")
-	print(get_parent())
-	get_parent().emit_signal("update_score", score)
-	#$CanvasLayer.update_score(score)
+	score += added_score
+	print(score, added_score)
 	$Control.update_bar(score)
+	get_parent().emit_signal("update_score", added_score)
+	

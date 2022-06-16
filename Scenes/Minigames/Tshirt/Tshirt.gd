@@ -15,7 +15,6 @@ var current_width = 17.5
 var mouse_hover = false
 
 func _ready():
-	$Score.hide()
 	$SpeechBubble.set_text("Dit T-shirt zat ook nog in de kast. Het is een beetje saai, \n" + 
 	"maar met deze verf en kwasten kan je er vast wat leuks mee!")
 	$Paintbuckets.greyout_buckets()
@@ -54,18 +53,21 @@ func _input(event: InputEvent) -> void:
 
 func _on_donation_button_pressed():
 	$AnimationPlayer.play("donate")
-	$Score.update_score(10)
+	Global.total_score += 10
+	$ScoreMessage/CanvasLayer.show_message(10)
 	$End_game.start()
 
 
 func _on_throw_away_button_pressed():
 	$AnimationPlayer.play("throwout")
-	$Score.update_score(0)
+	Global.total_score += 0
+	$ScoreMessage/CanvasLayer.show_message(0)
 	$End_game.start()
 
 func _on_keep_button_pressed():
 	$AnimationPlayer.play("keep")
-	$Score.update_score(5)
+	Global.total_score += 5
+	$ScoreMessage/CanvasLayer.show_message(5)
 	$End_game.start()
 
 func _on_Yellow_input_event(viewport, event, shape_idx):
