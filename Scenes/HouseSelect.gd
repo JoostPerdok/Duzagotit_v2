@@ -29,10 +29,14 @@ func _process(delta):
 
 
 func _on_House1Button_pressed():
+	$DoorSlam.play()
+	yield($DoorSlam, "finished")
 	emit_signal("level_changed", "Houses/House1_floor1")
 
 func _on_House2Button_pressed():
+	$DoorSlam.play()
 	emit_signal("level_changed", "Houses/House2")
 
 func _on_House3Button_pressed():
+	$DoorSlam.play()
 	emit_signal("level_changed", "Houses/House3")

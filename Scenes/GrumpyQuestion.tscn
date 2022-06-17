@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/GrumpyQuestion.gd" type="Script" id=1]
 [ext_resource path="res://Art/Minigame art/Throwgarbage/CatAnimation1/cat_1.png" type="Texture" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://Art/Pixeltype.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://Art/Calibri.tres" type="DynamicFont" id=28]
 [ext_resource path="res://Scenes/ScoreMessage.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Assets/Sounds/correct_answer.mp3" type="AudioStream" id=30]
+[ext_resource path="res://Assets/Sounds/wrong_answer.mp3" type="AudioStream" id=31]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Art/Pixeltype.ttf"
@@ -109,7 +111,7 @@ custom_fonts/normal_font = SubResource( 8 )
 position = Vector2( -422, 377 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 7 )
-frame = 2
+frame = 1
 speed_scale = 0.5
 playing = true
 
@@ -122,6 +124,12 @@ custom_fonts/font = ExtResource( 28 )
 text = "Volgende vraag!"
 
 [node name="ScoreMessage" parent="." instance=ExtResource( 29 )]
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
 
 [connection signal="fly_in_finished" from="." to="." method="_on_main_fly_in_finished"]
 [connection signal="pressed" from="Button1" to="." method="_on_Button_pressed"]

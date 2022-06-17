@@ -30,6 +30,8 @@ func _process(delta):
 
 
 func _on_Frontdoor_body_entered(body):
+	$DoorSlam.play()
+	yield($DoorSlam, "finished")
 	emit_signal("level_changed", "HouseSelect")
 
 
@@ -55,3 +57,11 @@ func _on_Pen_body_exited(body):
 	if body == $Player:
 		can_pickup_pen = false
 	
+
+
+func _on_Area2D2_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_Toilet_body_entered(body):
+	$Toilet/ToiletFlush.play()

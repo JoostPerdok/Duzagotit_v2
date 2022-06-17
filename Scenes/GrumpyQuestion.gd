@@ -83,8 +83,10 @@ func _on_Button_pressed():
 	if correct_answer == 1:
 		Global.total_score += 5
 		$ScoreMessage/CanvasLayer.show_message(5)
+		$CorrectSound.play()
 		flash_button($Button1, 1)
 	else:
+		$WrongSound.play()
 		flash_button($Button1, 0)
 	
 	already_answered = true
@@ -96,8 +98,10 @@ func _on_Button2_pressed():
 	if correct_answer == 2:
 		Global.total_score += 5
 		$ScoreMessage/CanvasLayer.show_message(5)
+		$CorrectSound.play()
 		flash_button($Button2, 1)
 	else:
+		$WrongSound.play()
 		flash_button($Button2, 0)
 	
 	already_answered = true
@@ -109,8 +113,10 @@ func _on_Button3_pressed():
 	if correct_answer == 3:
 		Global.total_score += 5
 		$ScoreMessage/CanvasLayer.show_message(5)
+		$CorrectSound.play()
 		flash_button($Button3, 1)
 	else:
+		$WrongSound.play()
 		flash_button($Button3, 0)
 	
 	already_answered = true
