@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Scenes/Minigames/Tshirt/TshirtLevel1.gd" type="Script" id=1]
 [ext_resource path="res://Art/Minigame art/Tshirt/donation_bin.png" type="Texture" id=2]
@@ -44,14 +44,21 @@
 [ext_resource path="res://Scenes/ScoreMessage.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Art/Minigame art/Tshirt/background_wardrobe_game_.png" type="Texture" id=43]
 [ext_resource path="res://Art/Minigame art/Tshirt/wardrobe.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Sounds/wrong_answer.mp3" type="AudioStream" id=45]
+[ext_resource path="res://Assets/Sounds/correct_answer.mp3" type="AudioStream" id=46]
+
+[sub_resource type="DynamicFont" id=9]
+size = 240
+extra_spacing_char = 2
+font_data = ExtResource( 38 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 160
+size = 300
 extra_spacing_char = 2
 font_data = ExtResource( 38 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 130
+size = 180
 extra_spacing_char = 2
 font_data = ExtResource( 38 )
 
@@ -302,22 +309,19 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 44 )
 
 [node name="throw_away_button" type="TextureButton" parent="."]
-margin_left = 92.0
-margin_top = 859.0
-margin_right = 566.0
-margin_bottom = 1447.0
+margin_left = 83.0
+margin_top = 848.0
+margin_right = 557.0
+margin_bottom = 1436.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="throw_away_button"]
-margin_left = -13.3333
-margin_top = 593.333
-margin_right = 486.667
-margin_bottom = 693.333
-custom_fonts/font = SubResource( 1 )
+margin_left = -106.667
+margin_top = 586.667
+margin_right = 659.333
+margin_bottom = 736.667
+custom_fonts/font = SubResource( 9 )
 text = "Weggooien"
 
 [node name="donation_button" type="TextureButton" parent="."]
@@ -327,15 +331,12 @@ margin_right = 2441.0
 margin_bottom = 1646.0
 rect_scale = Vector2( 0.25, 0.25 )
 texture_normal = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="donation_button"]
-margin_left = 196.0
-margin_top = 784.0
-margin_right = 628.0
-margin_bottom = 884.0
+margin_left = -32.0
+margin_top = 748.0
+margin_right = 886.0
+margin_bottom = 937.0
 custom_fonts/font = SubResource( 1 )
 text = "Weggeven"
 
@@ -346,15 +347,12 @@ margin_right = 968.0
 margin_bottom = 1349.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="keep_button"]
-margin_left = 104.0
-margin_top = 594.0
-margin_right = 408.0
-margin_bottom = 676.0
+margin_left = 66.0
+margin_top = 582.0
+margin_right = 484.0
+margin_bottom = 695.0
 custom_fonts/font = SubResource( 2 )
 text = "Houden"
 
@@ -429,7 +427,18 @@ texture = ExtResource( 41 )
 
 [node name="ScoreMessage" parent="." instance=ExtResource( 42 )]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Correctsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
+
+[node name="Wrongsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 45 )
+
 [connection signal="pressed" from="throw_away_button" to="." method="_on_throw_away_button_pressed"]
 [connection signal="pressed" from="donation_button" to="." method="_on_donation_button_pressed"]
 [connection signal="pressed" from="keep_button" to="." method="_on_keep_button_pressed"]
 [connection signal="pressed" from="Scissors/ScissorsButton" to="." method="_on_ScissorsButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

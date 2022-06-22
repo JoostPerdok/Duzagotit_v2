@@ -16,7 +16,12 @@ func _ready():
 	$Scissors.hide()
 	$Poof.hide()
 	$BrokenShorts.hide()
-	part1()
+	part0()
+
+func part0():
+	$SpeechBubble.set_text("We gaan je oude kleren opruimen! Je kan voor elk kledingstuk \nkiezen wat je wilt doen," + 
+	"weggeven, houden of weggooien. \nLaten we beginnen!")
+	$Timer.start()
 
 
 func part1():	# Dirty shirt
@@ -105,6 +110,11 @@ func _on_donation_button_pressed():
 	yield(get_node("AnimationPlayer"), "animation_finished")
 	Global.total_score += donate
 	$ScoreMessage/CanvasLayer.show_message(donate)
+	if donate == 10:
+		$Correctsound.play()
+	else:
+		$Wrongsound.play()
+	
 	call(next_level)
 
 
@@ -113,6 +123,11 @@ func _on_throw_away_button_pressed():
 	yield(get_node("AnimationPlayer"), "animation_finished")
 	Global.total_score += throwout
 	$ScoreMessage/CanvasLayer.show_message(throwout)
+	if throwout == 10:
+		$Correctsound.play()
+	else:
+		$Wrongsound.play()
+		
 	call(next_level)
 
 
@@ -127,3 +142,7 @@ func _on_ScissorsButton_pressed():
 	$throw_away_button.show()
 	$donation_button.show()
 	$keep_button.show()
+
+
+func _on_Timer_timeout():
+	part1()

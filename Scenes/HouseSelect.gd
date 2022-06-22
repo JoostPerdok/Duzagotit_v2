@@ -21,7 +21,7 @@ func _process(delta):
 		$House2Highlight.show()
 	else:
 		$House2Highlight.hide()
-
+	
 	if $House3Button.is_hovered():
 		$House3Highlight.show()
 	else:
@@ -29,12 +29,13 @@ func _process(delta):
 
 
 func _on_House1Button_pressed():
-	$DoorSlam.play()
-	yield($DoorSlam, "finished")
+	Globalscene.doorslam()
+	Global.current_house = 1
 	emit_signal("level_changed", "Houses/House1_floor1")
 
 func _on_House2Button_pressed():
-	$DoorSlam.play()
+	Globalscene.doorslam()
+	Global.current_house = 2
 	emit_signal("level_changed", "Houses/House2")
 
 func _on_House3Button_pressed():

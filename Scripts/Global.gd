@@ -4,11 +4,14 @@ var player_position = Vector2(1290,810)
 var player_inventory = []
 var total_score = 0
 var can_walk = true
-# Called when the node enters the scene tree for the first time.
+var current_house =2
+
+
 func _ready():
 	pass # Replace with function body.
 
-
+func doorslam():
+	$Door.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

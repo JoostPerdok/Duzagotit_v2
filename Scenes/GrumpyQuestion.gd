@@ -18,6 +18,7 @@ var questions_answered = 0
 const MAX_QUESTIONS = 3
 var questions_asked = []
 var randomint
+var all_correct
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +35,7 @@ func _ready():
 func fly_in():		# note: this should be done with an animationplayer instead
 	var pos = $AnimatedSprite.get_position()
 	var x = pos[0]
-	for i in range(90):
+	for i in range(85):
 		$AnimatedSprite.position.x = x+8
 		x = x + 8
 		yield(get_tree(), "idle_frame") #waits execution of the loop one frame
@@ -80,7 +81,7 @@ func _on_Button_pressed():
 	if already_answered:
 		return
 	
-	if correct_answer == 1:
+	if correct_answer == 1 or all_correct == 1:
 		Global.total_score += 5
 		$ScoreMessage/CanvasLayer.show_message(5)
 		$CorrectSound.play()
@@ -95,7 +96,7 @@ func _on_Button2_pressed():
 	if already_answered:
 		return
 	
-	if correct_answer == 2:
+	if correct_answer == 2 or all_correct == 1:
 		Global.total_score += 5
 		$ScoreMessage/CanvasLayer.show_message(5)
 		$CorrectSound.play()
@@ -110,7 +111,7 @@ func _on_Button3_pressed():
 	if already_answered:
 		return
 	
-	if correct_answer == 3:
+	if correct_answer == 3 or all_correct == 1:
 		Global.total_score += 5
 		$ScoreMessage/CanvasLayer.show_message(5)
 		$CorrectSound.play()
@@ -147,7 +148,10 @@ func flash_button(button, correct):			#0 incorrect, 1 correct
 
 func read_json():
 	var file = File.new()
-	file.open("res://Assets/questions.json", file.READ)
+	if Global.current_house == 2:
+		file.open("res://Assets/questions2.json", file.READ)
+	else:
+		file.open("res://Assets/questions1.json", file.READ)
 	var json = file.get_as_text()
 	var json_result = JSON.parse(json).result
 	file.close()
@@ -159,8 +163,9 @@ func read_json():
 		rand = randi()
 		randomint = rand % json_result.size()
 	questions_asked.append(randomint)
-	var questionanswer = json_result[randomint]
-	# var questionanswer = json_result[11]
+	#var questionanswer = json_result[randomint]
+	randomint = 2
+	var questionanswer = json_result[2]		#2 alles goed
 	print(questions_asked)
 	
 	question = questionanswer["question"]
@@ -168,6 +173,13 @@ func read_json():
 	answer_wrong1 = questionanswer["wrong_answer1"]
 	answer_wrong2 = questionanswer["wrong_answer2"]
 	explanation = questionanswer["explanation"]
+	
+	# Check for questions2, question 2
+	if Global.current_house == 2 and randomint == 2:
+		all_correct = 1
+	else:
+		all_correct = 0
+	
 
 func end_question():
 	questions_answered += 1

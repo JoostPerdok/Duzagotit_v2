@@ -297,7 +297,7 @@ shape = SubResource( 11 )
 
 [node name="Shoelace" type="Area2D" parent="."]
 position = Vector2( 455, 745 )
-rotation = -4.68097
+rotation = -3.87463
 __meta__ = {
 "_edit_group_": true
 }

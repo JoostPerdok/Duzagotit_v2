@@ -30,8 +30,7 @@ func _process(delta):
 
 
 func _on_Frontdoor_body_entered(body):
-	$DoorSlam.play()
-	yield($DoorSlam, "finished")
+	Globalscene.doorslam()
 	emit_signal("level_changed", "HouseSelect")
 
 
