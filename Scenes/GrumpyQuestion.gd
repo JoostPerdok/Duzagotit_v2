@@ -163,9 +163,8 @@ func read_json():
 		rand = randi()
 		randomint = rand % json_result.size()
 	questions_asked.append(randomint)
-	#var questionanswer = json_result[randomint]
-	randomint = 2
-	var questionanswer = json_result[2]		#2 alles goed
+	var questionanswer = json_result[randomint]
+	#var questionanswer = json_result[2]		#2 alles goed
 	print(questions_asked)
 	
 	question = questionanswer["question"]
