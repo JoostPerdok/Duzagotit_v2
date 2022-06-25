@@ -14,6 +14,7 @@ func _ready():
 
 
 func _on_TextureButton_pressed():
+	$SwitchSound.play()
 	if is_enabled == true:
 		is_enabled = false
 		$Lightbulb/Light2D.hide()

@@ -420,6 +420,15 @@ stream = ExtResource( 8 )
 position = Vector2( -1.5, -12 )
 shape = SubResource( 16 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 86.0
+margin_top = 16.0
+margin_right = 342.0
+margin_bottom = 64.0
+text = "Bewegen: pijltoetsen of  w, a, s en d.
+Interacties: Spatie / Enter
+"
+
 [connection signal="body_entered" from="Area2D/Frontdoor" to="." method="_on_Frontdoor_body_entered"]
 [connection signal="body_entered" from="Area2D/Stairs" to="." method="_on_Stairs_body_entered"]
 [connection signal="body_entered" from="Sock" to="." method="_on_Sock_body_entered"]

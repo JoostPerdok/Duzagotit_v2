@@ -12,8 +12,9 @@ func _ready():
 
 
 func _on_Stairs_body_entered(body):
-	Global.player_position = Vector2(1229,765) # just outside the stairs hitbox
-	emit_signal("level_changed", "Houses/House2_floor2")
+	if body == $Player:
+		Global.player_position = Vector2(656,775) # just outside the stairs hitbox
+		emit_signal("level_changed", "Houses/House2_floor2")
 
 
 func _process(delta):
@@ -32,16 +33,25 @@ func _on_Frontdoor_body_entered(body):
 
 
 func _on_DishWashergame_body_entered(body):
-	interact_dishwasher = true
+	if body == $Player:
+		interact_dishwasher = true
 
 
 func _on_DishWashergame_body_exited(body):
-	interact_dishwasher = false
+	if body == $Player:
+		interact_dishwasher = false
 
 
 func _on_ReplaceLights_body_entered(body):
-	interact_replacelights = true
+	if body == $Player:
+		interact_replacelights = true
 
 
 func _on_ReplaceLights_body_exited(body):
-	interact_replacelights = false
+	if body == $Player:
+		interact_replacelights = false
+
+
+func _on_Toilet_body_entered(body):
+	if body == $Player:
+		$Toilet/ToiletFlush.play()

@@ -9,6 +9,7 @@ var interact_gadget = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$House/Gadgetgame/GadgetHighlight.hide()
 	$Player.position = Global.player_position
 
 
@@ -25,25 +26,28 @@ func _process(delta):
 
 
 func _on_Stairs_body_entered(body):
-	emit_signal("level_changed", "Houses/House2_floor1")
+	if body == $Player:
+		emit_signal("level_changed", "Houses/House2_floor1")
 
 func _on_SwitchLights_body_entered(body):
-	interact_switchlights = true
-	print("enter switchlights")
+	if body == $Player:
+		interact_switchlights = true
 
 func _on_SwitchLights_body_exited(body):
-	interact_switchlights = false
-	print("exit switchligghts")
+	if body == $Player:
+		interact_switchlights = false
 
 
 func _on_Gadgetgame_body_entered(body):
-	interact_gadget = true
-	print("enter gagdgetgame")
+	if body == $Player:
+		$House/Gadgetgame/GadgetHighlight.show()
+		interact_gadget = true
 
 
 func _on_Gadgetgame_body_exited(body):
-	interact_gadget = false
-	print("exit gadgetgaem")
+	if body == $Player:
+		$House/Gadgetgame/GadgetHighlight.hide()
+		interact_gadget = false
 
 
 
