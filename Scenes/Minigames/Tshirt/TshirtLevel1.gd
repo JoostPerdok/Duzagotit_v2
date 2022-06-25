@@ -21,6 +21,9 @@ func _ready():
 func part0():
 	$SpeechBubble.set_text("We gaan je oude kleren opruimen! Je kan voor elk kledingstuk \nkiezen wat je wilt doen," + 
 	"weggeven, houden of weggooien. \nLaten we beginnen!")
+	$throw_away_button.hide()
+	$donation_button.hide()
+	$keep_button.hide()
 	$Timer.start()
 
 
@@ -145,4 +148,7 @@ func _on_ScissorsButton_pressed():
 
 
 func _on_Timer_timeout():
+	$throw_away_button.show()
+	$donation_button.show()
+	$keep_button.show()
 	part1()

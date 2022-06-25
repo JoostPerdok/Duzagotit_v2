@@ -1,7 +1,8 @@
 extends Node
 
 var score = 0
-var house_scenes = ["Houses/House1_floor1", "Houses/House1_floor2", "Houses/House2_floor1", "Houses/House2_floor2"] # scenes where to show the progressbar
+var house1_scenes = ["Houses/House1_floor1", "Houses/House1_floor2"]
+var house2_scenes = ["Houses/House2_floor1", "Houses/House2_floor2"] # scenes where to show the progressbar
 
 
 # main
@@ -14,19 +15,24 @@ func _ready():
 
 func _process(delta):
 	if $SceneSwitcher.is_asking_question:
-		$Score/Control/TextureProgress.hide()
+		$Score/Control/House1Progress.hide()
+		$Score/Control/House2Progress.hide()
 		$Inventory.hide()
-	elif $SceneSwitcher.current_level_name in house_scenes:
-		$Score/Control/TextureProgress.show()
+	elif $SceneSwitcher.current_level_name in house1_scenes:
+		$Score/Control/House1Progress.show()
+		$Inventory.show()
+	elif $SceneSwitcher.current_level_name in house2_scenes:
+		$Score/Control/House2Progress.show()
 		$Inventory.show()
 	else:
-		$Score/Control/TextureProgress.hide()
+		$Score/Control/House1Progress.hide()
+		$Score/Control/House2Progress.hide()
 		$Inventory.hide()
 
 
 func handle_update_score(add_score):
 	score += add_score
-	$Score.update_score(add_score)
+	$Score.update_score1(add_score)
 
 func handle_rubbish_friend_start():
 	$SceneSwitcher.modulate = "#404040"

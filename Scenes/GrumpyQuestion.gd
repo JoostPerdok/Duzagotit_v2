@@ -20,6 +20,7 @@ var questions_asked = []
 var randomint
 var all_correct
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	questions_asked = []
@@ -82,7 +83,7 @@ func _on_Button_pressed():
 		return
 	
 	if correct_answer == 1 or all_correct == 1:
-		Global.total_score += 5
+		add_score(5)
 		$ScoreMessage/CanvasLayer.show_message(5)
 		$CorrectSound.play()
 		flash_button($Button1, 1)
@@ -97,7 +98,7 @@ func _on_Button2_pressed():
 		return
 	
 	if correct_answer == 2 or all_correct == 1:
-		Global.total_score += 5
+		add_score(5)
 		$ScoreMessage/CanvasLayer.show_message(5)
 		$CorrectSound.play()
 		flash_button($Button2, 1)
@@ -112,7 +113,7 @@ func _on_Button3_pressed():
 		return
 	
 	if correct_answer == 3 or all_correct == 1:
-		Global.total_score += 5
+		add_score(5)
 		$ScoreMessage/CanvasLayer.show_message(5)
 		$CorrectSound.play()
 		flash_button($Button3, 1)
@@ -200,6 +201,15 @@ func reset_scene():
 	$SpeechBubble.hide()
 	$RichTextLabel.hide()
 	$NextButton.hide()
+
+func add_score(score: int):
+	if Global.current_house == 1:
+		Global.total_score += score
+	if Global.current_house == 2:
+		Global.house2_score += score
+	else:
+		Global.total_score += score
+	
 
 
 func _on_NextButton_pressed():

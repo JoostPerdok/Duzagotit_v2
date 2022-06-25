@@ -3,8 +3,9 @@ extends Node
 var player_position = Vector2(1290,810)
 var player_inventory = []
 var total_score = 0
+var house2_score = 0
 var can_walk = true
-var current_house =2
+var current_house
 
 
 func _ready():
@@ -12,6 +13,3 @@ func _ready():
 
 func doorslam():
 	$Door.play()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

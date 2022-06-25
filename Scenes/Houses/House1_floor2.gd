@@ -38,7 +38,6 @@ func _process(delta):
 		yield(get_node("AnimationPlayer"), "animation_finished")
 		Global.player_inventory.append("paper")
 	
-	
 	if Input.is_action_pressed("ui_accept") and can_pickup_shoelace == true:
 		$AnimationPlayer.play("pickup_shoelace")
 		yield(get_node("AnimationPlayer"), "animation_finished")

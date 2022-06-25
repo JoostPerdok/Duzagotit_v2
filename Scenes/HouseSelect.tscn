@@ -1,9 +1,56 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/Images/three_houses.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/HouseSelect.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/HouseHighlight.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sounds/doorslam.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/SpeechBubble.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Art/Images/contstruction_worker.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("construction worker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -100, 500 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/path = NodePath("construction worker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -100, 500 ), Vector2( 150, 500 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("construction worker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 150, 500 ), Vector2( -100, 500 ) ]
+}
 
 [node name="HouseSelect" type="Node2D"]
 scale = Vector2( 3.12, 1.74 )
@@ -56,6 +103,25 @@ Width = 3.0
 [node name="DoorSlam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[node name="construction worker" type="Sprite" parent="."]
+position = Vector2( -100, 500 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="SpeechBubble" parent="." instance=ExtResource( 5 )]
+position = Vector2( 184.295, 212.069 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/entry = SubResource( 2 )
+anims/exit = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="AnimationPlayer"]
+wait_time = 6.0
+one_shot = true
+
 [connection signal="pressed" from="House1Button" to="." method="_on_House1Button_pressed"]
 [connection signal="pressed" from="House2Button" to="." method="_on_House2Button_pressed"]
 [connection signal="pressed" from="House3Button" to="." method="_on_House3Button_pressed"]
+[connection signal="timeout" from="AnimationPlayer/Timer" to="." method="_on_Timer_timeout"]

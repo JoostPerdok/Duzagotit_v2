@@ -1,9 +1,7 @@
 extends Node2D
 
+signal ask_question
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var is_enabled = true
 var times_switched = 0
 
@@ -13,12 +11,6 @@ func _ready():
 	$Lightbulb/Light2D.show()
 	modulate = '#ffffff'
 	$SpeechBubble.set_text("Dit licht hoeft niet aan te staan als er niemand is,\n doe het uit om energie te besparen!")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 
 
 func _on_TextureButton_pressed():
@@ -53,5 +45,10 @@ func _on_TextureButton_pressed():
 
 func _on_Button_pressed():
 	#end game
-	#emit_signal(...)
-	pass # Replace with function body.
+	$ScoreMessage/CanvasLayer.show_message(10)
+	Global.house2_score += 10
+	$Timer.start()
+
+
+func _on_Timer_timeout():
+	emit_signal("ask_question", "Houses/House2_floor2")

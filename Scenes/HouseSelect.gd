@@ -36,8 +36,15 @@ func _on_House1Button_pressed():
 func _on_House2Button_pressed():
 	Globalscene.doorslam()
 	Global.current_house = 2
-	emit_signal("level_changed", "Houses/House2")
+	emit_signal("level_changed", "Houses/House2_floor1")
 
 func _on_House3Button_pressed():
-	$DoorSlam.play()
-	emit_signal("level_changed", "Houses/House3")
+	$AnimationPlayer.play("entry")
+	yield(get_node("AnimationPlayer"), "animation_finished")
+	$SpeechBubble.set_text("Psst... Dit huis is nog niet af.\n Ga verder met de eerste 2 huizen!    ")
+	$AnimationPlayer/Timer.start()
+
+
+func _on_Timer_timeout():
+	$SpeechBubble.set_text("")
+	$AnimationPlayer.play("exit")

@@ -3,6 +3,7 @@ extends Node2D
 signal update_score
 
 var score
+var score2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +20,10 @@ func _process(delta):
 		#$CanvasLayer/AnimationPlayer.play("show_message")
 		#score += 10
 	score = Global.total_score
-	$Control.update_bar(score)
+	$Control.update_bar1(score) #197 max
+	score2 = Global.house2_score
+	$Control.update_bar2(score2) #67 max
+	
 
 func update_score(added_score: int):
 	$CanvasLayer/Message.text = "+" + String(added_score)
