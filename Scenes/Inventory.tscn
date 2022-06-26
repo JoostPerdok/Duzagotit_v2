@@ -503,7 +503,7 @@ texture = ExtResource( 4 )
 position = Vector2( -309, 320 )
 scale = Vector2( 0.284, 0.299 )
 frames = SubResource( 1 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="SpeechBubble" parent="." instance=ExtResource( 13 )]

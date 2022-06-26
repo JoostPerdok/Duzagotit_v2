@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/Cat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ScoreMessage.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Art/Minigame art/GadgetGame/solar_panel.png" type="Texture" id=10]
 [ext_resource path="res://Art/Minigame art/GadgetGame/expencive_tooth_brush.png" type="Texture" id=11]
 [ext_resource path="res://Art/Minigame art/GadgetGame/electric_plug.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sounds/correct_answer.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Sounds/wrong_answer.mp3" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 180
@@ -133,6 +135,12 @@ scale = Vector2( 2, 2 )
 [node name="EndGameTimer" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
+
+[node name="Correct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Wrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
 
 [connection signal="pressed" from="Computer/Expensive/ExpensiveButton" to="." method="_on_ExpensiveButton_pressed"]
 [connection signal="pressed" from="Computer/Medium/MediumButton" to="." method="_on_MediumButton_pressed"]

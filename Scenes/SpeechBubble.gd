@@ -6,20 +6,26 @@ onready var text_bg = $Anchor/ColorRect
 const char_time = 0.04
 const margin_offset = 16
 
+var use_timer = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
 	#set_text("Waarom zijn\n bananen krom? Ze groeien naar de zon.") #test
 
-func set_text(text, wait_time = 3):
+func set_text(text, wait_time = 0):
 	# reset margin_bottom
 	text_bg.margin_bottom = 84
 	text_node.margin_bottom = 128
 	
 	visible = true
 	
-	$Timer.wait_time = wait_time
 	$Timer.stop()
+	if wait_time != 0:
+		$Timer.wait_time = wait_time
+		use_timer = true
+	else:
+		use_timer = false
 	
 	text_node.bbcode_text = text
 	
@@ -66,9 +72,11 @@ func set_text(text, wait_time = 3):
 
 
 func _on_Tween_tween_all_completed():
-	$Timer.start()
+	if use_timer == true:
+		print("timer start")
+		$Timer.start()
 
 
 func _on_Timer_timeout():
-	pass
+	set_text("")
 	#visible = false

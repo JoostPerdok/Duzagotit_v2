@@ -36,19 +36,26 @@ func _on_Frontdoor_body_entered(body):
 
 func _on_Sock_body_entered(body):
 	if body == $Player:
-		can_pickup_sock = true
+		if "sock" in Global.player_inventory or "rubbish_friend" in Global.player_inventory:
+			can_pickup_sock = false
+		else:
+			can_pickup_sock = true
 	
 
 
 func _on_Sock_body_exited(body):
 	if body == $Player:
+		print("exited sock")
 		can_pickup_sock = false
 	
 
 
 func _on_Pen_body_entered(body):
 	if body == $Player:
-		can_pickup_pen = true
+		if  "pen" in Global.player_inventory or "rubbish_friend" in Global.player_inventory:
+			can_pickup_pen = false
+		else:
+			can_pickup_pen = true
 		
 
 

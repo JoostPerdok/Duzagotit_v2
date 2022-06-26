@@ -29,7 +29,7 @@ func part0():
 
 func part1():	# Dirty shirt
 	current_clothing = $DirtyShirt
-	$SpeechBubble.set_text("Wat wil je doen met dit oude shirt?")
+	$SpeechBubble.set_text("Wat wil je doen met dit oude, kapotte shirt?")
 	throwout = 10
 	keep = 5
 	donate = 0

@@ -13,6 +13,9 @@ func _ready():
 func doorslam():
 	$Door.play()
 
+func door_locked():
+	$Locked.play()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

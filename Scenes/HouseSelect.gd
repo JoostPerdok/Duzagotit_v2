@@ -12,6 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$Score/TextureProgress.value = Global.total_score + Global.house2_score
 	if $House1Button.is_hovered():
 		$House1Highlight.show()
 	else:
@@ -34,15 +35,17 @@ func _on_House1Button_pressed():
 	emit_signal("level_changed", "Houses/House1_floor1")
 
 func _on_House2Button_pressed():
-	Globalscene.doorslam()
-	Global.current_house = 2
-	emit_signal("level_changed", "Houses/House2_floor1")
+	if Global.total_score >= 0: 	#135
+		Globalscene.doorslam()
+		Global.current_house = 2
+		emit_signal("level_changed", "Houses/House2_floor1")
+	else:
+		Globalscene.door_locked()
+		$SpeechBubble.set_text("Verdien meer punten in het eerste huis  \nom dit huis vrij te spelen.", 4)
 
 func _on_House3Button_pressed():
-	$AnimationPlayer.play("entry")
-	yield(get_node("AnimationPlayer"), "animation_finished")
-	$SpeechBubble.set_text("Psst... Dit huis is nog niet af.\n Ga verder met de eerste 2 huizen!    ")
-	$AnimationPlayer/Timer.start()
+	Globalscene.door_locked()
+	$SpeechBubble.set_text("In deze versie van het spel is dit huis\n nog niet beschikbaar, sorry!", 4)
 
 
 func _on_Timer_timeout():

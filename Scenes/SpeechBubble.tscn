@@ -30,6 +30,8 @@ bbcode_enabled = true
 scroll_active = false
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
 

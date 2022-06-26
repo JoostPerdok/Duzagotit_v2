@@ -222,5 +222,6 @@ func _on_NextButton_pressed():
 		already_answered = false
 	else:
 		Global.can_walk = true
+		Global.can_interact = true
 		queue_free()
 		emit_signal("level_changed", next_level)

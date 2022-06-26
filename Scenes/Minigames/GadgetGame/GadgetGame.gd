@@ -17,6 +17,7 @@ func _on_ExpensiveButton_pressed():
 		Global.house2_score += 10
 		has_chosen = true
 		$EndGameTimer.start()
+		$Correct.play()
 
 
 func _on_MediumButton_pressed():
@@ -35,8 +36,9 @@ func _on_CheapButton_pressed():
 		Global.house2_score += 0
 		has_chosen = true
 		$EndGameTimer.start()
+		$Wrong.play()
 
 
 func _on_EndGameTimer_timeout():
-	hide()
+	$Cat.hide()
 	emit_signal("ask_question", "Houses/House2_floor2")

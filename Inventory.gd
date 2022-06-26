@@ -36,6 +36,7 @@ func _process(delta):
 
 func make_rubbish_friend():
 	Global.can_walk = false
+	Global.can_interact = false
 	emit_signal("rubbish_friend_start")
 	$AnimationPlayer.play("cat_enter")
 	yield(get_node("AnimationPlayer"), "animation_finished")

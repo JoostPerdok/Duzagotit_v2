@@ -12,8 +12,10 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	$CatHiss.play()
-	$AnimatedSprite.play("hiss")
+	if "ThrowableObject" in body.name:
+		$CatHiss.play()
+		$AnimatedSprite.play("hiss")
+	print(body.name)
 
 
 func _on_AnimatedSprite_animation_finished():

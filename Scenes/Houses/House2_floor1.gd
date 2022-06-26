@@ -8,7 +8,7 @@ var interact_replacelights = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$ReplaceLights/ReplaceHighlight.hide()
 
 
 func _on_Stairs_body_entered(body):
@@ -44,11 +44,13 @@ func _on_DishWashergame_body_exited(body):
 
 func _on_ReplaceLights_body_entered(body):
 	if body == $Player:
+		$ReplaceLights/ReplaceHighlight.show()
 		interact_replacelights = true
 
 
 func _on_ReplaceLights_body_exited(body):
 	if body == $Player:
+		$ReplaceLights/ReplaceHighlight.hide()
 		interact_replacelights = false
 
 

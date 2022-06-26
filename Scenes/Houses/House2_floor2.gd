@@ -14,11 +14,6 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_pressed("ui_accept") and interact_switchlights == true:
-		Global.player_position = $Player.position
-		emit_signal("level_changed", "Minigames/SwitchLights/SwitchLights")
-		print("active switchlights")
-	
 	if Input.is_action_pressed("ui_accept") and interact_gadget == true:
 		Global.player_position = $Player.position
 		emit_signal("level_changed", "Minigames/GadgetGame/GadgetGame")
@@ -30,12 +25,11 @@ func _on_Stairs_body_entered(body):
 		emit_signal("level_changed", "Houses/House2_floor1")
 
 func _on_SwitchLights_body_entered(body):
-	if body == $Player:
+	if body == $Player and Global.switchlights_played == false:
 		interact_switchlights = true
-
-func _on_SwitchLights_body_exited(body):
-	if body == $Player:
-		interact_switchlights = false
+		Global.switchlights_played = true
+		Global.player_position = $Player.position
+		emit_signal("level_changed", "Minigames/SwitchLights/SwitchLights")
 
 
 func _on_Gadgetgame_body_entered(body):
