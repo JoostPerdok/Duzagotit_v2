@@ -3,7 +3,7 @@ extends CanvasLayer
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var score = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,12 +16,12 @@ func show_message(text):
 	$MessageTimer.start()
 
 func update_score(score):
-	$Score.text = "Score: " + str(score) + "/3"
+	$Score.text = "Score: " + str(score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+#    pass
 
 
 func _on_MessageTimer_timeout():
-	$Message.hide()
+	pass # Replace with function body.
