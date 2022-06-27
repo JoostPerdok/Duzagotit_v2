@@ -17,13 +17,14 @@ func _ready():
 
 
 func _process(delta):
+	print(in_correct_bin, !is_grabbed, in_bins == 1)
 	if in_correct_bin and !is_grabbed and in_bins == 1:
 		queue_free()
 		main.get_node("CorrectSound").play()
 		main.get_node("ScoreMessage/CanvasLayer").show_message(5)
 		Global.total_score += 5
 		main.items_recycled += 1
-	if in_wrong_bin and !is_grabbed and in_bins == 1:
+	if !in_correct_bin and !is_grabbed and in_bins == 1:
 		queue_free()
 		main.get_node("WrongSound").play()
 		main.get_node("ScoreMessage/CanvasLayer").show_message(0)

@@ -42,6 +42,7 @@ func end_minigame():
 
 func _on_Timer_timeout():
 	$Cat.hide()
+	$SpeechBubble.hide()
 	emit_signal("ask_question", "Houses/House1_floor1")
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Art/Minigame art/Recycle/bin_glass.png" type="Texture" id=1]
 [ext_resource path="res://Art/Minigame art/Recycle/bin_organic.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Art/Minigame art/Recycle/bin_paper.png" type="Texture" id=4]
 [ext_resource path="res://Art/Minigame art/Recycle/bin_plastic.png" type="Texture" id=5]
 [ext_resource path="res://Art/Minigame art/Recycle/bin_battery.png" type="Texture" id=6]
-[ext_resource path="res://Art/Calibri.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Art/Minigame art/Separate_image/store_recycle_game.jpg" type="Texture" id=8]
 [ext_resource path="res://Art/Images/player/main_character_neutral.png" type="Texture" id=9]
 [ext_resource path="res://Art/Minigame art/Recycle/pizza.png" type="Texture" id=10]
@@ -25,21 +24,52 @@
 [ext_resource path="res://Scenes/SpeechBubble.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/Minigames/Throwgarbage/Cat.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Art/CalibriSmall.tres" type="DynamicFont" id=25]
+[ext_resource path="res://Art/Calibri Regular.ttf" type="DynamicFontData" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 57.5, 67 )
 
+[sub_resource type="DynamicFont" id=15]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 56, 67 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 55.5, 68 )
 
+[sub_resource type="DynamicFont" id=17]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
+
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 56, 68.5 )
 
+[sub_resource type="DynamicFont" id=18]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 56, 68.5 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 408, 390.5 )
@@ -109,7 +139,7 @@ margin_left = -29.0
 margin_top = 27.5
 margin_right = 26.0
 margin_bottom = 48.5
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = SubResource( 15 )
 text = "Glas"
 
 [node name="Plastic" type="Area2D" parent="Bins"]
@@ -132,7 +162,7 @@ margin_left = -41.0
 margin_top = 31.0
 margin_right = 26.0
 margin_bottom = 67.0
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = SubResource( 16 )
 text = "Plastic"
 
 [node name="Organic" type="Area2D" parent="Bins"]
@@ -153,9 +183,9 @@ shape = SubResource( 3 )
 [node name="RichTextLabel" type="RichTextLabel" parent="Bins/Organic"]
 margin_left = -49.0
 margin_top = 31.0
-margin_right = 42.0
+margin_right = 47.0
 margin_bottom = 69.0
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = SubResource( 17 )
 text = "Organisch"
 
 [node name="Paper" type="Area2D" parent="Bins"]
@@ -176,9 +206,9 @@ shape = SubResource( 4 )
 [node name="RichTextLabel" type="RichTextLabel" parent="Bins/Paper"]
 margin_left = -32.0
 margin_top = 27.0
-margin_right = 23.0
+margin_right = 45.0
 margin_bottom = 48.0
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = SubResource( 18 )
 text = "Papier"
 
 [node name="Rest" type="Area2D" parent="Bins"]
@@ -201,7 +231,7 @@ margin_left = -49.0
 margin_top = 30.0
 margin_right = 50.0
 margin_bottom = 52.0
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = SubResource( 19 )
 text = "Restafval"
 
 [node name="Battery" type="Area2D" parent="Bins"]
@@ -360,10 +390,10 @@ position = Vector2( 218, 86 )
 scale = Vector2( 1.25, 1.25 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 758.0
-margin_top = 678.0
-margin_right = 1218.0
-margin_bottom = 953.0
+margin_left = 932.0
+margin_top = 368.0
+margin_right = 1392.0
+margin_bottom = 643.0
 custom_fonts/font = ExtResource( 25 )
 text = "Beginnen!"
 
