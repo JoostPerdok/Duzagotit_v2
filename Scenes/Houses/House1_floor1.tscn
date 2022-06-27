@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Art/Images/Houses/house1_floor1.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Assets/Sounds/doorslam.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Sounds/toilet_flush.mp3" type="AudioStream" id=8]
 [ext_resource path="res://Art/Calibri Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scenes/Houses/Highlight.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/SpeechBubble.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Minigames/Throwgarbage/Cat.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 77.5, 141 )
@@ -31,6 +34,9 @@ extents = Vector2( 74.5, 5.54688 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 80.5, 102 )
 
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 113.75, 120.25 )
+
 [sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0.10559, 0.664596, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.681529, 0.681529, 0.681529, 1, 1, 1, 1, 1 )
@@ -51,6 +57,36 @@ color_ramp = SubResource( 15 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 1176.27, 987.576 )
+
+[sub_resource type="Animation" id=19]
+resource_name = "Cat_entry"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -138, 550 ), Vector2( 400, 550 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "Cat_exit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 400, 550 ), Vector2( -200, 550 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -173,6 +209,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Cat:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -138, 550 ) ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -312,6 +360,7 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 1000, 1000 )
 
 [node name="CollisionWalls" type="StaticBody2D" parent="Area2D"]
+visible = false
 
 [node name="Couch" type="CollisionShape2D" parent="Area2D/CollisionWalls"]
 position = Vector2( 1367.5, 441 )
@@ -352,6 +401,21 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Stairs"]
 position = Vector2( 1050.5, 842 )
 shape = SubResource( 6 )
+
+[node name="RecycleGame" type="Area2D" parent="Area2D"]
+position = Vector2( -178, 743 )
+
+[node name="Recycle" type="CollisionShape2D" parent="Area2D/RecycleGame"]
+position = Vector2( 976, 62 )
+shape = SubResource( 18 )
+
+[node name="RecycleHighlight" type="Polygon2D" parent="Area2D/RecycleGame"]
+position = Vector2( 74.4537, 110.492 )
+scale = Vector2( 0.954479, 0.353846 )
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 967.592, 317.958, 1065.03, 323.61, 1063.98, 63.6096, 965.497, 66.4355 )
+script = ExtResource( 10 )
+Width = 3.0
 
 [node name="Sock" type="Area2D" parent="."]
 position = Vector2( 1571, 270 )
@@ -410,6 +474,8 @@ scale = Vector2( 0.1, 0.1 )
 shape = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Cat_entry = SubResource( 19 )
+anims/Cat_exit = SubResource( 20 )
 anims/RESET = SubResource( 12 )
 anims/pickup_pen = SubResource( 14 )
 anims/pickup_sock = SubResource( 13 )
@@ -438,10 +504,25 @@ pijltoetsen of  w a s d
 Interacties: Spatie / Enter
 "
 
+[node name="Cat" parent="." instance=ExtResource( 12 )]
+position = Vector2( -138, 550 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SpeechBubble" parent="." instance=ExtResource( 11 )]
+position = Vector2( 529, 178 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="Timer2" type="Timer" parent="SpeechBubble"]
+wait_time = 6.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D/Frontdoor" to="." method="_on_Frontdoor_body_entered"]
 [connection signal="body_entered" from="Area2D/Stairs" to="." method="_on_Stairs_body_entered"]
+[connection signal="body_entered" from="Area2D/RecycleGame" to="." method="_on_RecycleGame_body_entered"]
+[connection signal="body_exited" from="Area2D/RecycleGame" to="." method="_on_RecycleGame_body_exited"]
 [connection signal="body_entered" from="Sock" to="." method="_on_Sock_body_entered"]
 [connection signal="body_exited" from="Sock" to="." method="_on_Sock_body_exited"]
 [connection signal="body_entered" from="Pen" to="." method="_on_Pen_body_entered"]
 [connection signal="body_exited" from="Pen" to="." method="_on_Pen_body_exited"]
 [connection signal="body_entered" from="Toilet" to="." method="_on_Toilet_body_entered"]
+[connection signal="timeout" from="SpeechBubble/Timer2" to="." method="_on_Timer2_timeout"]

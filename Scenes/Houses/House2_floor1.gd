@@ -24,7 +24,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("ui_accept") and interact_replacelights == true:
 		Global.player_position = $Player.position
-		#emit_signal("level_changed", "Minigames/Throwgarbage/throwgarbage")
+		emit_signal("level_changed", "Minigames/Change_bulbs/Bulbs")
 
 
 func _on_Frontdoor_body_entered(body):
