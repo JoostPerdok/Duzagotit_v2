@@ -25,10 +25,10 @@ func _on_Button_pressed():
 
 
 func _on_VideoPlayer_finished():
-	emit_signal("level_changed", "HouseSelect")
+	emit_signal("level_changed", "Houses/House1_floor1")
 
 
 func _on_VideoTimer_timeout():
 	$VideoPlayer.stop()
 	$VideoPlayer.hide()
-	emit_signal("level_changed", "HouseSelect")
+	emit_signal("level_changed", "Houses/House1_floor1")

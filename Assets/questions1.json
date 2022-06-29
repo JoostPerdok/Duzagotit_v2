@@ -1,6 +1,6 @@
 [
   {
-    "question": "Wat wordt er met ingezameld  \nplastic gedaan?", "correct_answer": "Het wordt bewerkt om \n er nieuw plastic van te maken.", "wrong_answer1": "Het wordt schoongemaakt en \n dan kan je het weer gebruiken", "wrong_answer2": "Het is onbruikbaar \n en wordt weggegooid.", "explanation": "", "is_asked": "0"
+    "question": "Wat wordt er met ingezameld  \nplastic gedaan?", "correct_answer": "Het wordt bewerkt om \n er nieuw plastic van te maken.", "wrong_answer1": "Het wordt schoongemaakt en \n dan kan je het weer gebruiken.", "wrong_answer2": "Het is onbruikbaar \n en wordt weggegooid.", "explanation": "", "is_asked": "0"
   },
   {
     "question": "Hoe lang duurt het voordat een \nbananenschil is verteerd?", "correct_answer": "Minstens 1 jaar", "wrong_answer1": "een half jaar", "wrong_answer2": "2 maanden", "explanation": "", "is_asked": "0"
@@ -9,7 +9,7 @@
     "question": "Waarom mag een kapotte \novenschaal niet bij het oude glas?", "correct_answer": "Een ovenschaal wordt gemaakt van ander glas", "wrong_answer1": "Omdat hij niet door het gaatje in de container past. ", "wrong_answer2": "Omdat het glas van een ovenschaal niet te recyclen is. ", "explanation": "Een ovenschaal is van een ander soort glas dan 'verpakkingsglas'. \n Het glas van een ovenschaal smelt op een hogere temperatuur dan verpakkingsglas. ", "is_asked": "0"
   },
   {
-    "question": "Hoelang duurt het voordat een \nplastic fles is verteerd? ", "correct_answer": "Oneindig lang", "wrong_answer1": "50 jaar", "wrong_answer2": "100 jaar", "explanation": "Een plastic fles verteerd nooit!", "is_asked": "0"
+    "question": "Hoelang duurt het voordat een \nplastic fles is verteerd? ", "correct_answer": "Oneindig lang", "wrong_answer1": "50 jaar", "wrong_answer2": "100 jaar", "explanation": "Een plastic fles verteert nooit!", "is_asked": "0"
   },
   {
     "question": "Waar wordt papier van gemaakt?", "correct_answer": "Van houtvezels en oud papier", "wrong_answer1": "Van de papyrusplant", "wrong_answer2": "Van zand", "explanation": "Nieuw papier wordt van houtvezels gemaakt. Oud papier wordt gerecycled om nieuw papier van te maken.", "is_asked": "0"

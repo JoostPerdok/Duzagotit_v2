@@ -10,7 +10,7 @@ var picked_up = true
 var should_reset = false
 var score = 0
 #vector for throwing speed/angle
-var x = 800
+var x = 1000
 var y = 0
 
 const MAX_SCORE = 3
@@ -21,7 +21,7 @@ func _ready():
 	arrow.hide()
 	spawn_item()
 	$HUD.update_score(score)
-	$HUD.show_message("Throw the garbage in the bin!")
+	$HUD.show_message("Gooi je afval in de prullenbak!")
 
 func _physics_process(delta):
 	arrow.rotation_degrees = (y / PI)
@@ -79,7 +79,7 @@ func spawn_item():
 	y = 0
 	object = preload("res://Scenes/Minigames/Throwgarbage/ThrowableObject.tscn").instance()
 	add_child(object)
-	object.gravity_scale = 2.5
+	object.gravity_scale = 5
 	object.bounce = 0.2
 	should_reset = false
 	picked_up = true

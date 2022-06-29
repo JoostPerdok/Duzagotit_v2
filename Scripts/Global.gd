@@ -14,8 +14,8 @@ func _ready():
 
 func _process(delta):
 	# cant get more than max points by replaying minigames
-	if total_score > 180:
-		total_score = 180
+	if total_score > 220:
+		total_score = 220
 	if house2_score > 50:
 		house2_score = 50
 

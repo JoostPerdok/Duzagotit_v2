@@ -19,7 +19,7 @@ func _ready():
 	part0()
 
 func part0():
-	$SpeechBubble.set_text("We gaan je oude kleren opruimen! Je kan voor elk kledingstuk \nkiezen wat je wilt doen," + 
+	$SpeechBubble.set_text("We gaan je oude kleren opruimen! Je kan voor elk kledingstuk \nkiezen wat je wilt doen, " + 
 	"weggeven, houden of weggooien. \nLaten we beginnen!")
 	$throw_away_button.hide()
 	$donation_button.hide()

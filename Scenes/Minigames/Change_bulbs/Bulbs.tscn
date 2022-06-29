@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Minigames/Change_bulbs/Old_bulb.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Minigames/Change_bulbs/New_bulb.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Minigame art/Bulbs_image/light_bulb_box.png" type="Texture" id=3]
-[ext_resource path="res://Art/Minigame art/Bulbs_image/big_lamp.png" type="Texture" id=4]
 [ext_resource path="res://Art/Minigame art/Bulbs_image/table_lamp.png" type="Texture" id=5]
 [ext_resource path="res://Art/Minigame art/Bulbs_image/ceeling_lamp_1.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Minigames/Change_bulbs/HUD.tscn" type="PackedScene" id=7]
@@ -13,9 +12,7 @@
 [ext_resource path="res://Scenes/Minigames/Change_bulbs/New_bulb2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Art/Minigame art/Bulbs_image/lightimage.png" type="Texture" id=12]
 [ext_resource path="res://Art/Minigame art/Bulbs_image/bedroom_new_main_.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/Minigames/Change_bulbs/Old_bulb3.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Minigames/Change_bulbs/Old_bulb4.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Minigames/Change_bulbs/New_bulb3.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Minigames/Change_bulbs/New_bulb4.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -26,9 +23,6 @@ radius = 36.0555
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 25.0799
-
-[sub_resource type="CircleShape2D" id=6]
-radius = 49.7293
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 48.0937
@@ -46,9 +40,6 @@ position = Vector2( 814, 420 )
 
 [node name="New_bulb2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 775, 342 )
-
-[node name="New_bulb3" parent="." instance=ExtResource( 16 )]
-position = Vector2( 990, 460 )
 
 [node name="New_bulb4" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1054, 448 )
@@ -76,18 +67,6 @@ rotation = -3.14159
 scale = Vector2( 0.0474209, 0.0399394 )
 texture = ExtResource( 10 )
 
-[node name="Lightimage3" type="Sprite" parent="."]
-position = Vector2( 677, 202 )
-rotation = -3.14159
-scale = Vector2( 0.26261, 0.21687 )
-texture = ExtResource( 12 )
-
-[node name="LedOn3" type="Sprite" parent="."]
-position = Vector2( 681, 167 )
-rotation = 3.14159
-scale = Vector2( 0.0694386, 0.0741451 )
-texture = ExtResource( 10 )
-
 [node name="Lightimage4" type="Sprite" parent="."]
 position = Vector2( 1427, 220 )
 scale = Vector2( 0.197266, 0.189453 )
@@ -104,9 +83,6 @@ position = Vector2( 2, 27 )
 
 [node name="Old_bulb2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 933, 201 )
-
-[node name="Old_bulb3" parent="." instance=ExtResource( 14 )]
-position = Vector2( 369, 43 )
 
 [node name="Old_bulb4" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1298, 82 )
@@ -133,11 +109,6 @@ position = Vector2( 1024, 340 )
 scale = Vector2( 0.101563, 0.129883 )
 texture = ExtResource( 5 )
 
-[node name="BigLamp" type="Sprite" parent="."]
-position = Vector2( 678.938, 158.625 )
-scale = Vector2( 0.13678, 0.153686 )
-texture = ExtResource( 4 )
-
 [node name="CeelingLamp2" type="Sprite" parent="."]
 position = Vector2( 1416, 159 )
 scale = Vector2( 0.16626, 0.156982 )
@@ -157,12 +128,6 @@ shape = SubResource( 5 )
 position = Vector2( 1053, 321 )
 shape = SubResource( 4 )
 
-[node name="Area2D2_bulb3" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2_bulb3"]
-position = Vector2( 679, 174 )
-shape = SubResource( 6 )
-
 [node name="Area2D2_bulb4" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2_bulb4"]
@@ -171,9 +136,7 @@ shape = SubResource( 7 )
 
 [connection signal="area_shape_entered" from="LightBulbBox/Area2D" to="Old_bulb" method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_entered" from="LightBulbBox/Area2D" to="Old_bulb2" method="_on_Area2D_area_shape_entered"]
-[connection signal="area_shape_entered" from="LightBulbBox/Area2D" to="Old_bulb3" method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_entered" from="LightBulbBox/Area2D" to="Old_bulb4" method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D2_bulb1" to="New_bulb" method="_on_Area2D2_bulb1_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D2_bulb2" to="New_bulb2" method="_on_Area2D2_bulb2_area_shape_entered"]
-[connection signal="area_shape_entered" from="Area2D2_bulb3" to="New_bulb3" method="_on_Area2D2_bulb3_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D2_bulb4" to="New_bulb4" method="_on_Area2D_area_shape_entered"]
