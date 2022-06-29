@@ -31,7 +31,7 @@ func _process(delta):
 		$Score/Control/House2Progress.hide()
 		$Inventory.hide()
 	
-	if Global.total_score == 220 and Global.house2_score == 50 and !game_ended:
+	if Global.total_score == 200 and Global.house2_score == 80 and !game_ended:
 		if $SceneSwitcher.current_level_name in house1_scenes or $SceneSwitcher.current_level_name in house2_scenes:
 			game_ended = true
 			end_game()

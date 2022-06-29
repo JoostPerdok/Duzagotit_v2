@@ -35,5 +35,7 @@ custom_fonts/font = SubResource( 2 )
 text = "You Scored!"
 
 [node name="MessageTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

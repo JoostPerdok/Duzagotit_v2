@@ -20,7 +20,7 @@ func _ready():
 func _on_Button_pressed():
 	$VideoPlayer.show()
 	$VideoPlayer.play()
-	$VideoTimer.start()
+	#$VideoTimer.start()
 	
 
 

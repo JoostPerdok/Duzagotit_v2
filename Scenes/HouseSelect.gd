@@ -35,7 +35,7 @@ func _on_House1Button_pressed():
 	emit_signal("level_changed", "Houses/House1_floor1")
 
 func _on_House2Button_pressed():
-	if Global.total_score >= 0: 	#135
+	if Global.total_score >= 135: 	#135
 		Globalscene.doorslam()
 		Global.current_house = 2
 		emit_signal("level_changed", "Houses/House2_floor1")

@@ -45,7 +45,7 @@ func _input(event):
 	if score != MAX_SCORE: #only if game has not ended
 		if Input.is_action_just_pressed("throw_ball"):
 			if picked_up == true:
-				object.apply_impulse(Vector2(),Vector2(x, y*5))
+				object.apply_impulse(Vector2(),Vector2(x, y*8))
 			picked_up = false
 			print(y)
 			arrow.hide()

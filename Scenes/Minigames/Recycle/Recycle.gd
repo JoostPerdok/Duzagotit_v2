@@ -36,7 +36,7 @@ func _on_Button_pressed():
 
 func end_minigame():
 	$Cat.show()
-	$SpeechBubble.set_text("Goed gedaan, alles in opgeruimd!")
+	$SpeechBubble.set_text("Goed gedaan, alles is opgeruimd!")
 	$Timer.start()
 
 

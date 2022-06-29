@@ -17,7 +17,6 @@ func _ready():
 
 
 func _process(delta):
-	print(in_correct_bin, !is_grabbed, in_bins == 1)
 	if in_correct_bin and !is_grabbed and in_bins == 1:
 		queue_free()
 		main.get_node("CorrectSound").play()

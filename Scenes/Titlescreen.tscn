@@ -41,7 +41,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 967, 254 )
 frames = SubResource( 1 )
-frame = 12
+frame = 4
 playing = true
 
 [node name="Button" type="Button" parent="."]
@@ -67,6 +67,7 @@ one_shot = true
 margin_right = 1919.0
 margin_bottom = 1080.0
 stream = ExtResource( 17 )
+volume_db = -20.0
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="VideoTimer" to="." method="_on_VideoTimer_timeout"]

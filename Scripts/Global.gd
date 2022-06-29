@@ -14,10 +14,10 @@ func _ready():
 
 func _process(delta):
 	# cant get more than max points by replaying minigames
-	if total_score > 220:
-		total_score = 220
-	if house2_score > 50:
-		house2_score = 50
+	if total_score > 200:
+		total_score = 200
+	if house2_score > 80:
+		house2_score = 80
 
 func doorslam():
 	$Door.play()
